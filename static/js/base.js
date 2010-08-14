@@ -9,6 +9,9 @@ $(function(){
         return false;
     });
     
+    //relative time script
+    $(".timeago").timeago();
+    
     //login/sign up textifeld clearing
     var searchDefaultText = $("#id_email").attr("value");
 

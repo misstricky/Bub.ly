@@ -126,6 +126,64 @@ a:hover{
     margin-bottom:20px;
 }
 
+.home table#short_stats{
+    font: 13px/15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    color:#555;
+    background:#f5f5f5;
+    margin:50px auto;
+    padding-bottom:15px;
+    width:950px;
+    border:1px solid #eee;
+    border-collapse:separate;
+    -moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+
+}
+
+.home table#short_stats a{
+    color:#037bc2;
+}
+
+.home table#short_stats thead{
+
+}
+
+.home table#short_stats thead th{
+    font-size:20px;
+    font-weight:lighter;
+    text-align:left;
+    line-height:30px;
+    padding:8px 10px;
+}
+
+.home table#short_stats thead th.delete, .home table#short_stats thead th.hits, .home table#short_stats tbody tr td.delete, .home table#short_stats tbody tr td.hits{
+    text-align:center;
+    width:75px;
+}
+
+.home table#short_stats .link_delete{
+    opacity:.80;
+}
+
+.home table#short_stats .link_delete:hover{
+    opacity:1;
+}
+
+.home table#short_stats tbody tr{
+    border-collapse:separate;
+    -moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+}
+
+.home .table-even{ background:#eee; }
+
+.home .table-hover{ background:#eee; }
+
+.home table tbody tr td{
+    padding:8px 10px;
+}
 
 
 /* ---------- Login Styles ---------- */
@@ -268,4 +326,3 @@ a:hover{
     font-size:22px;
     font-weight:300;
 }
-

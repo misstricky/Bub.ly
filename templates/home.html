@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load short_tags %}
 
 {% block title %}- Your Account{% endblock %}
 
@@ -42,10 +43,30 @@
 					You can also use our handy <a href="javascript:void((function(){window.open('{{short_url}}shorten_url/?url='+encodeURIComponent(window.location.href)+'&login=1', 'bub.ly', 'status=no,resizable=no,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=875,height=520,left=0,top=0')})());">bookmarklet</a> in your bookmarks bar to shorten links!
 				</p>
 			</div>
-			
 		</div>{# end-inter-inner #}
-		
 	</div>{# end-inter-main #}
 
+	<table id="short_stats" cellspacing="0">
+		<thead>
+		  	<tr>
+				<th class="link">Short Link</th>
+				<th class="link">Destination</th>
+				<th class="when">Date</th>
+				<th class="hits">Hits</th>
+				<th class="delete">Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+	  {% for url in urls %}
+		    <tr>
+				<td class="link">{{ url.get_short_url|urlize }}</td>
+				<td class="full_url">{{ url.url|urlizetrunc:30 }}</td>
+				<td class="when timeago" title="{{ url.created_at|to_datetime }}">{{ url.created_at|to_datetime }}</td>
+		        <td class="hits">{{ url.hits }}</td>
+		        <td class="delete"><a href="{{ url.get_short_url }}" class="link_delete"><img src="/static/css/images/delete.gif"></a></td>
+			</tr>
+	  {% endfor %}
+		</tbody>
+	</table>
 </dviv>{# container #}
 {% endblock %}
