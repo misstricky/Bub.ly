@@ -19,6 +19,51 @@ a:hover{
     color:#3381aa;
 }
 
+/* ---------- Main Home Styles ---------- */
+
+.home{
+    font-weight:300;
+}
+
+.home #container{
+    width:100%;
+}
+
+#main-top{
+    background:url(images/main-top-bg.gif) repeat-x top left;
+    height:44px;
+    padding:10px 20px 0 20px;    
+    overflow:hidden;
+}
+
+#main-top .main-title{
+    display:block;
+    width:155px;
+    height:38px;
+    background:url(images/main-title2.gif) top right no-repeat;
+    text-indent:-99999px;
+    float:left;
+}
+
+#main-top .main-menu{
+    float:right;
+    margin-top:9px;
+}
+
+#main-top .main-menu a{
+    color:#fff;
+    font-size:14px;
+    background:#418bb3;
+    padding:4px 14px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#main-top .main-menu a:hover{
+    background:#444;
+}
+
 
 /* ---------- Login Styles ---------- */
 
