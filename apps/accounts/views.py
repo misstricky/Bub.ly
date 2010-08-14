@@ -25,12 +25,13 @@ def login(request):
             # get the id of the user and set session
             user_id = redis_ob.get("user:email:%s" %md5_constructor(form.cleaned_data['email']).hexdigest())
             request.session['user_id'] = user_id
-            return HttpResponseRedirect("/")
+            next = request.POST.get("next", "/")
+            return HttpResponseRedirect(next)
     else:
         # if user is already logged in redirect to /
         if request.session.has_key('user_id'): return HttpResponseRedirect("/")
         form = LoginForm()
-    return render_to_response("login.html", {'form': form}, context_instance=RequestContext(request))
+    return render_to_response("landing.html", {'form': form}, context_instance=RequestContext(request))
 
 def logout(request):
     request.session.flush()
