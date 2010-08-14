@@ -211,7 +211,7 @@ a:hover{
 }
 
 .settings p{
-    margin:10px 0;
+    margin:20px 0;
 }
 
 
@@ -325,6 +325,13 @@ a:hover{
     width:670px;
 }
 
+#ocean-floor .ocean-form .errorlist li{
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    padding:5px;
+}
+
 #ocean-floor .ocean-form label{
     display:none;
 }
@@ -353,7 +360,6 @@ a:hover{
 }
 
 #ocean-floor .ocean-form #register_button{
-    display:none;
     width:307px;
     height:59px;
     background:url(images/ocean-signup-button.gif) top left no-repeat;
@@ -367,6 +373,7 @@ a:hover{
 }
 
 #ocean-floor .ocean-form #login_button{
+    display:none;
     width:307px;
     height:59px;
     background:url(images/ocean-login-button.gif) top left no-repeat;
@@ -379,7 +386,9 @@ a:hover{
     text-shadow:none;
 }
 
-#ocean-floor .ocean-form .log-in{ display:none; }
+#ocean-floor .ocean-form .log-in{ }
+
+#ocean-floor .ocean-form .sign-up{ display:none; }
 
 #ocean-floor .ocean-form .sign-up, #ocean-floor .ocean-form .log-in{
     text-align:center;
