@@ -3,5 +3,34 @@
 {% block body_class %}login{% endblock %}
 
 {% block content %}
-hey
+<div id="container">
+	<div id="sky-bg">
+		<div id="sky-header">
+			<a href="/" class="sky-title">Bub.ly</a>
+		</div>{# end sky header #}
+		<div id="ocean-floor">
+			<div class="ocean-main">
+				<div class="ocean-text">
+					<p>Hello!!  Welcome to <a href="/">bub.ly!</a>  Here you can upload files and shorten links. You can even use a droplet on your dock to upload files easily. So without further ado...</p>
+				</div>{# end ocean text #}
+				<div class="ocean-header">Come On In!</div>
+				<div class="ocean-form">
+						<form action="" id="login_register_form" method="POST" accept-charset="utf-8">
+						  	<label for="id_email">Email:</label></th><td><input type="text" name="email" id="id_email" value="email address" />
+							<label for="id_password">Password:</label></th><td><input type="password" name="password" id="id_password"   value="password" />
+						  {% csrf_token %}
+					  <input type="submit" id="register_button" value="Register &rarr;">
+					  <input type="submit" id="login_button" value="Login &rarr;">
+					</form>
+					<div class="sign-up">
+						Don't have an account? <a href="#" class="sign-up-link">Sign up!</a>
+					</div>
+					<div class="log-in">
+						Already have an account? <a href="#" class="login-link">Log in!</a>
+					</div>
+				</div>{# end ocean form #}
+			</div>{# end ocean main #}
+		</div>{# end ocean floor #}
+	</div>{# end sky bg #}
+</div>{# end container #}
 {% endblock %}

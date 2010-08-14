@@ -1,1 +1,150 @@
 @import url("reset.css");
+
+/* ---------- Base Styles ---------- */
+
+a{
+    text-decoration:none;
+    font-weight:500;
+}
+
+/* ---------- Login Styles ---------- */
+
+.login{
+    background:url(images/body-ocean-bg.gif) repeat left 372px;
+    color:#cff5ff;
+}
+
+.login a{
+    color:#fff;
+    text-shadow: #418bb3 1px 1px 2px;
+}
+
+.login a:hover{
+    color:#232323;
+}
+
+.login #container{
+    width:100%;
+}
+
+.login #sky-bg{
+    width:100%;
+    background:url(images/sky-bg.gif) repeat-x left top;
+}
+
+#sky-header{
+    width:100%;
+    height:130px;
+    padding-top:50px;
+}
+
+#sky-header .sky-title{
+    text-indent:-999999px;
+    display:block;
+    width:327px;
+    height:112px;
+    background:url(images/sky-title-2.gif) no-repeat top left;
+    margin:0 auto;
+}
+
+#ocean-floor{
+    width:100%;
+    background:url(images/waves-top.gif) repeat-x top left;
+}
+
+#ocean-floor .ocean-main{
+    width:930px;
+    margin:0 auto;
+    background:transparent url(images/fishies.gif) 0 90px no-repeat;
+}
+
+#ocean-floor .ocean-text{
+    padding-top:113px;
+    font-weight:300;
+    color:#cff5ff;
+    font-size:30px;
+    line-height:35px;
+    margin-bottom:15px;
+    position:relative;
+    width:825px;
+    margin:0 auto 15px auto;
+}
+
+#ocean-floor .ocean-header{
+    color:#fff;
+    font-size:54px;
+    line-height:60px;
+    text-align:center;
+    font-weight:600;
+    margin-bottom:10px;
+    text-shadow: #418bb3 1px 1px 2px;
+}
+
+#ocean-floor .ocean-form{
+    margin:0 auto;
+    width:670px;
+}
+
+#ocean-floor .ocean-form label{
+    display:none;
+}
+
+#ocean-floor .ocean-form #id_email, #ocean-floor .ocean-form #id_password{
+    background:#caedfa;
+    border:#caedfa 1px solid;
+    width:300px;
+    color:#333;
+    font-size:30px;
+    line-height:36px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom:15px;
+    padding:5px;
+    font-weight:500;
+}
+
+#ocean-floor .ocean-form #id_email{
+    float:left;
+}
+
+#ocean-floor .ocean-form #id_password{
+    float:right;
+}
+
+#ocean-floor .ocean-form #register_button{
+    display:none;
+    width:307px;
+    height:59px;
+    background:url(images/ocean-signup-button.gif) top left no-repeat;
+    border:none;
+    text-indent:-999999px;
+    cursor: pointer;
+    cursor: hand;
+    margin:0 0 5px 185px;
+    font-weight:200;
+    text-shadow:none;
+}
+
+#ocean-floor .ocean-form #login_button{
+    width:307px;
+    height:59px;
+    background:url(images/ocean-login-button.gif) top left no-repeat;
+    border:none;
+    text-indent:-999999px;
+    cursor: pointer;
+    cursor: hand;
+    margin:0 0 5px 185px;
+    font-weight:200;
+    text-shadow:none;
+}
+
+#ocean-floor .ocean-form .log-in{ display:none; }
+
+#ocean-floor .ocean-form .sign-up, #ocean-floor .ocean-form .log-in{
+    text-align:center;
+    color:#cff5ff;
+    font-size:22px;
+    font-weight:300;
+}
+

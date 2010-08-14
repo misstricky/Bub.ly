@@ -1,1 +1,3 @@
-Nothing here yet.
+Hello!!  Welcome to bub.ly!  Here you can upload files and shorten links. You can even use a (applescript) droplet on your dock to upload files easily. 
+
+The site consists of two main pages: a homepage with a login/sign up form, and an account page that you see once you are logged in. The account page lists all the links you have shortened and all the files you have uploaded. The account page also provides you with an area to upload files, a download link for your personalized applescript droplet, and a draggable bookmarklet to shorten links.
