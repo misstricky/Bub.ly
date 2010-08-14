@@ -84,6 +84,38 @@ a:hover{
     padding-top:50px;
 }
 
+#inter-main .inter-main-inner #droplet-area{
+    float:left;
+    width:200px;
+    padding-top:50px;
+}
+
+.html-home .droplet{
+    width:153px;
+    height:64px;
+    background:url(images/upload.gif) no-repeat top left;
+    
+    display:block;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+.html-home .droplet input.file
+{
+    position: relative;
+    height: 100%;
+    width: auto;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+*.html-home .droplet:hover{
+    color:#fff;
+    background:url(images/upload-hover.gif) no-repeat top left;
+    cursor: pointer;
+    cursor: hand;
+}
+
 #inter-main .inter-main-inner #info{
     float:left;
     width:700px;

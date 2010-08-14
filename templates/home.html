@@ -2,6 +2,12 @@
 
 {% block title %}- Your Account{% endblock %}
 
+{% block html_class %}html-home{% endblock %}
+
+{% block extra_head %}
+<script src="{{ MEDIA_URL }}js/si.files.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
 {% block body_class %}home{% endblock %}
 
 {% block content %}  
@@ -20,6 +26,11 @@
 				  <div class="droplet">
 			      <input type="file" name="file" class="file">
 			    {% csrf_token %}
+					<script type="text/javascript" language="javascript">
+					// <![CDATA[
+					SI.Files.stylizeAll();
+					// ]]>
+					</script>
 					</div>{# end-droplet #}
 					</form>
 			</div>{# end-droplet-area #}
