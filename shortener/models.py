@@ -7,6 +7,9 @@ from connect_redis import get_client
 from utils import to36
 redis_ob = get_client()
 
+class UrlNotSaved(Exception):
+    pass
+
 class DoesNotExist(Exception):
     pass
 
