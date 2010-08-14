@@ -41,8 +41,9 @@
 
 #facebox .body {
   padding: 10px;
-  background: #fff;
+  background: #232323;
   width: 370px;
+  color:#ccc;
 }
 
 #facebox .loading {
@@ -59,7 +60,6 @@
 }
 
 #facebox .footer {
-  border-top: 1px solid #DDDDDD;
   padding-top: 5px;
   margin-top: 10px;
   text-align: right;

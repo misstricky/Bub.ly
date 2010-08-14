@@ -100,6 +100,17 @@ a:hover{
     cursor: pointer;
 }
 
+
+.html-home .droplet-success{
+    width:153px;
+    height:64px;
+    background:url(images/droplet-success.gif) no-repeat top left;
+    
+    display:none;
+    overflow:hidden;
+    cursor: pointer;
+}
+
 .html-home .droplet input.file
 {
     position: relative;
@@ -118,7 +129,6 @@ a:hover{
 }
 
 .droplet_spinner { 
-    margin-left: 60px;
     display:none;
 }
 
