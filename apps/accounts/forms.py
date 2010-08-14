@@ -10,6 +10,12 @@ def generate_api_key(user_email):
         api_key = md5_constructor("%s%s" %(str(user_email), str(random.random))).hexdigest()
     return api_key
 
+def generate_password(password):
+    # generating salt. Trying to mimic django auth app password generation
+    salt = sha_constructor(str(random.random()) +str(random.random())).hexdigest()[:5]
+    hsh = sha_constructor(salt + password).hexdigest()
+    return salt, hsh
+
 class RegisterForm(forms.Form):
     email = forms.EmailField(required=True)
     password = forms.CharField(required=True, widget=forms.PasswordInput(render_value=False))
@@ -23,9 +29,7 @@ class RegisterForm(forms.Form):
     def save(self):
         # get the user id by incrementing counter
         user_id = redis_ob.incr("counter:user")
-        # generating salt. Trying to mimic django auth app password generation
-        salt = sha_constructor(str(random.random()) +str(random.random())).hexdigest()[:5]
-        hsh = sha_constructor(salt +self.cleaned_data["password"]).hexdigest()
+        salt, hsh = generate_password(self.cleaned_data["password"])
         # using redis pipeline to make it happen as a transaction.
         redis_pipe = redis_ob.pipeline()
         api_key = generate_api_key(self.cleaned_data['email'])

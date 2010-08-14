@@ -23,6 +23,16 @@
 	
 	<div id="inter-main">
 		<div class="inter-main-inner">
+		  
+		  {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+		  
 			<div id="droplet-area">
 				  <form id="upload_form" action="/file_upload/" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
 				  <img src="{{ MEDIA_URL }}css/images/ajax-loader.gif" class="droplet_spinner">

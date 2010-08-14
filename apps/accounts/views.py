@@ -1,8 +1,9 @@
+from django.contrib import messages
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.hashcompat import md5_constructor
-from forms import RegisterForm, LoginForm, SettingsForm
+from forms import RegisterForm, LoginForm, SettingsForm, generate_password
 
 from connect_redis import get_client
 redis_ob = get_client()
@@ -46,8 +47,18 @@ def settings(request):
     if request.method == "POST":
         form = SettingsForm(request.POST)
         if form.is_valid():
-            # redis_ob.rename()
-            pass # set the email and password of the user
+            user_email = redis_ob.hget("user:%s" %user_id, "email")
+            redis_pipe = redis_ob.pipeline()
+            if user_email != form.cleaned_data['email']:
+                if redis_ob.exists("user:email:%s" %md5_constructor(form.cleaned_data['email']).hexdigest()):
+                    message = "Another account is already associated with that email"
+                    return render_to_response('settings.html', {'form': form, 'user_data': user_data, 'message': message}, context_instance=RequestContext(request))
+                redis_pipe.rename("user:email:%s" %md5_constructor(user_email).hexdigest(), "user:email:%s" %md5_constructor(form.cleaned_data['email']).hexdigest()).hset("user:%s" %user_id, "email", form.cleaned_data['email'])
+            salt, hsh = generate_password(form.cleaned_data['password'])
+            redis_pipe.hset("user:%s" %user_id, "password", "%s$%s" %(salt, hsh))
+            redis_pipe.execute()
+            messages.add_message(request, messages.INFO, 'Your account settings are updated!')
+            return HttpResponseRedirect("/")
     elif request.method =="DELETE":
         # delete user related data from redis
         user_email = redis_ob.hget("user:%s" %user_id, "email")

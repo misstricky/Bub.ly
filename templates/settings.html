@@ -17,6 +17,7 @@
 	
 	<div id="inter-main">
 		<div class="settings">
+		  {% if message %}{{ message }}{% endif %}
       <form action="" method="POST" accept-charset="utf-8">
         {{ form.as_p }}
         <p>API key: {{ user_data.api_key }}</p>

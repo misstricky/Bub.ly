@@ -405,3 +405,6 @@ a:hover{
     font-size:22px;
     font-weight:300;
 }
+
+.errorlist { color: red; font-size: 0.8em;}
+.messages { color: green; font-size: 0.8em; padding: 4px 10px; background: #EFF2B6;}
