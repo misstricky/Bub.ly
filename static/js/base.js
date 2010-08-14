@@ -31,6 +31,12 @@ $(function(){
         return false;
     });
     
+    // delete entry
+    $(".link_delete").click(function(){
+        var self=$(this);
+        return false;
+    });
+    
     //login/sign up textifeld clearing
     var searchDefaultText = $("#id_email").attr("value");
 
