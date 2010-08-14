@@ -15,4 +15,6 @@ EXTERNAL DEPENDENCIES:
    - You can choose to move the binary redis-server into ur /usr/local/bin
      or run it right from there.
 
+USING DROPLET TO UPLOAD FILES
+
 

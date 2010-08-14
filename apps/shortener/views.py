@@ -35,6 +35,7 @@ def file_upload(request):
     url_id = redis_ob.incr('counter:url')
     temp_file_name = to36(url_id)
     file_data = request.FILES['file']
+    api_key = request.POST.get("api_key", None)
     sub = file_data.name.split('.')[-1]
     destination = open(os.path.join(settings.MEDIA_ROOT, 'files', temp_file_name+'.'+sub), 'wb+')
     for chunk in file_data.chunks():
@@ -44,7 +45,13 @@ def file_upload(request):
     url_object.save(url_id=url_id)
     # if authenticated user set url to his account
     if request.session.has_key("user_id"):
-        redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
+        if redis_ob.hexists("user:%s" %str(user_id), "email"):
+            redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
+    # if api_key is set add the url to the user account
+    if api_key:
+        user_id = redis_ob.get("user:api_key:%s" %api_key)
+        if redis_ob.hexists("user:%s" %str(user_id), "email"):
+            redis_ob.lpush("user:urls:%s" %user_id, "url:"+str(url_object.id))
     return HttpResponse(url_object.get_short_url())
 
 def expand_url(request, slug):
