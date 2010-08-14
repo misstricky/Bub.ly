@@ -42,14 +42,16 @@ def settings(request):
     if not request.session.has_key("user_id"): raise Http404
     user_id = request.session["user_id"]
     user_data = redis_ob.hgetall("user:%s" %user_id)
+    if not user_data: raise Http404
     if request.method == "POST":
         form = SettingsForm(request.POST)
         if form.is_valid():
+            # redis_ob.rename()
             pass # set the email and password of the user
     elif request.method =="DELETE":
         # delete user related data from redis
         user_email = redis_ob.hget("user:%s" %user_id, "email")
-        redis_ob.delete(["user:email:%s" %md5_constructor(user_email).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id])
+        redis_ob.delete("user:email:%s" %md5_constructor(user_email).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id)
         # logout the user
         request.session.flush()
         return HttpResponse("success", mimetype="application/javascript")

@@ -1,5 +1,6 @@
 $(function(){
     $("#user_delete").click(function(){
+         if ( confirm('Are you sure you want to delete your account? All your entries will no longer be functional.' ) )
         $.ajax({type: "DELETE",
                 url: "/_settings/",
                 dataType: "html",
