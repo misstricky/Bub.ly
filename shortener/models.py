@@ -4,6 +4,7 @@
 import time
 from django.conf import settings
 from connect_redis import get_client
+from utils import to36
 redis_ob = get_client()
 
 class DoesNotExist(Exception):
@@ -36,7 +37,7 @@ class UrlModel(object):
 
     def save(self):
         url_id = redis_ob.incr(self.key_counter)
-        # if url id is less than 6000 set to 6000 so that they appear better
+        # if url id is less than 14000 set to 14000 so that they appear better
         if url_id < 14000: url_id = self.set_counter_url()
         while redis_ob.hexists(self.key_prefix+str(url_id), "url"):
             url_id = redis_ob.incr(self.key_counter)
