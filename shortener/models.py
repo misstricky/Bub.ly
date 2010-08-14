@@ -2,6 +2,7 @@
 # mimic a django like model with some methods to fetch data
 
 import time
+from django.conf import settings
 from connect_redis import get_client
 redis_ob = get_client()
 
@@ -28,6 +29,10 @@ class UrlModel(object):
         if not url_data: raise DoesNotExist
         url_data_id = int(url_id.lstrip("url:"))
         return self(url_data=url_data, url_id=url_data_id)
+
+    def get_short_url(self):
+        if not self.id: raise UrlNotSaved
+        return '%s%s/' %(settings.SHORT_URL, to36(int(self.id)))
 
     def save(self):
         url_id = redis_ob.incr(self.key_counter)
