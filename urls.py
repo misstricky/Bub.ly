@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
+    (r'^$', 'shortener.views.home'),
     (r'^_register/$', 'accounts.views.register'),
     (r'^_login/$', 'accounts.views.login'),
     (r'^_logout/$', 'accounts.views.logout'),
