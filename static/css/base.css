@@ -79,3 +79,29 @@ a{
     text-shadow: #418bb3 1px 1px 2px;
 }
 
+#ocean-floor .ocean-form{
+    margin:0 auto;
+    width:670px;
+}
+
+#ocean-floor .ocean-form label{
+    display:none;
+}
+
+#ocean-floor .ocean-form #id_email, #ocean-floor .ocean-form #id_password{
+    background:#caedfa;
+    border:#caedfa 1px solid;
+    width:300px;
+    color:#333;
+    font-size:30px;
+    line-height:36px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom:15px;
+    padding:5px;
+    font-weight:500;
+}
+
+
+
