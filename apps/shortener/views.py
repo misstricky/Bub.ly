@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
@@ -62,5 +63,5 @@ def home(request):
             urls = []
             for url_id in url_ids:
                 urls.append(UrlModel.get_by_id(url_id=url_id))
-            return render_to_response('home.html', {'urls': urls}, context_instance=RequestContext(request))
+            return render_to_response('home.html', {'urls': urls, 'short_url': settings.SHORT_URL}, context_instance=RequestContext(request))
     return render_to_response('landing.html', {}, context_instance=RequestContext(request))
