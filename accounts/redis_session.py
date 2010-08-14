@@ -14,10 +14,14 @@ class SessionStore(SessionBase):
         pass
 
     def create(self):
-        pass
+        self.session_key = self._get_new_session_key()
+        return self.save()
 
     def save(self):
-        pass
+        key = "s:%s" % self.session_key
+        func = redis_ob.set
+        result = func(key, self.encode(self._get_session(no_load=must_create)))
+        redis_ob.expire(key, self.get_expiry_age())
 
     def delete(self):
         pass
