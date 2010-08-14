@@ -66,7 +66,7 @@ $(function(){
     $('.sign-up-link').click(function() {
       $('#login_register_form').attr('action', '/_register/');
       $('#login_button').hide();
-      $('#register_button').fadeIn();
+      $('#register_button').show();
       $('.sign-up').hide();
       $('.log-in').show();
       return false;
@@ -75,7 +75,7 @@ $(function(){
     $('.login-link').click(function() {
       $('#login_register_form').attr('action', '/_login/');
       $('#register_button').hide();
-      $('#login_button').fadeIn();
+      $('#login_button').show();
       $('.sign-up').show();
       $('.log-in').hide()
       return false;
