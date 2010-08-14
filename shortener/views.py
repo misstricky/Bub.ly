@@ -18,7 +18,10 @@ def shorten_url(request):
     return HttpResponse(url_object.get_short_url())
 
 def file_upload(request):
-    pass
+    if not request.method == 'POST': raise Http404
+    if not request.FILES: raise Http404
+    if not os.path.exists(os.path.join(settings.MEDIA_ROOT, 'files')):
+        os.makedirs(os.path.join(settings.MEDIA_ROOT, 'files'))
 
 def home(request):
     try: 
