@@ -44,6 +44,14 @@
   background: #232323;
   width: 370px;
   color:#ccc;
+  font-size:18px;
+  font-weight:500;
+  line-height:22px;
+}
+
+#facebox .body a{
+    color:#fff;
+    text-shadow: #000 1px 1px 2px;
 }
 
 #facebox .loading {
