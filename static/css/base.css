@@ -47,6 +47,11 @@ a{
     margin:0 auto;
 }
 
+#ocean-floor{
+    width:100%;
+    background:url(images/waves-top.gif) repeat-x top left;
+}
+
 #ocean-floor .ocean-main{
     width:930px;
     margin:0 auto;
