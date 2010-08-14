@@ -1,5 +1,12 @@
 @import url("reset.css");
 
+/* ---------- Base Styles ---------- */
+
+a{
+    text-decoration:none;
+    font-weight:500;
+}
+
 /* ---------- Login Styles ---------- */
 
 .login{
@@ -40,5 +47,30 @@
     margin:0 auto;
 }
 
+#ocean-floor .ocean-main{
+    width:930px;
+    margin:0 auto;
+}
 
+#ocean-floor .ocean-text{
+    padding-top:113px;
+    font-weight:300;
+    color:#cff5ff;
+    font-size:30px;
+    line-height:35px;
+    margin-bottom:15px;
+    position:relative;
+    width:825px;
+    margin:0 auto 15px auto;
+}
+
+#ocean-floor .ocean-header{
+    color:#fff;
+    font-size:54px;
+    line-height:60px;
+    text-align:center;
+    font-weight:600;
+    margin-bottom:10px;
+    text-shadow: #418bb3 1px 1px 2px;
+}
 
