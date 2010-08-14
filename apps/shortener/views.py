@@ -49,10 +49,15 @@ def expand_url(request, slug):
         url_id = int(slug, 36)
     except:
         raise Http404
-    long_url = redis_ob.hget("url:%d" %url_id, "url")
-    if not long_url: raise Http404
-    redis_ob.hincrby("url:%d" %url_id, "hits")
-    return HttpResponseRedirect(long_url)
+    if request.method == "GET":
+        long_url = redis_ob.hget("url:%d" %url_id, "url")
+        if not long_url: raise Http404
+        redis_ob.hincrby("url:%d" %url_id, "hits")
+        return HttpResponseRedirect(long_url)
+    elif request.method = "DELETE":
+        pass
+        # check if the logged in user owns the current entry and delete the entry
+    raise Http404
 
 def home(request):
     try: 

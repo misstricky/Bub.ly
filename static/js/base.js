@@ -34,6 +34,11 @@ $(function(){
     // delete entry
     $(".link_delete").click(function(){
         var self=$(this);
+        $.ajax({url: self.attr("href"),
+                type: 'DELETE',
+                success: function(){
+                        self.parents('tr').remove();
+                }});
         return false;
     });
     
