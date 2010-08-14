@@ -10,13 +10,16 @@ redis_ob = get_client()
 
 def shorten_url(request):
     url = request.GET.get('url', None)
+    login = request.GET.get('login', '0')
     # validate the url here
     if not url: raise Http404
+    if login == '1' and not request.session.has_key("user_id"):
+        return HttpResponseRedirect("/_login/?next=/shorten_url/?url=%s&login=1" %url)
     url_object = UrlModel(url_data={'url':url})
     url_object.save()
     # if authenticated user set url to his account
     if request.session.has_key("user_id"):
-        redis_ob.lpush("user:urls:%d" %request.session['user_id'], "url:"+str(url_object.id))
+        redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
     return HttpResponse(url_object.get_short_url())
 
 def file_upload(request):
