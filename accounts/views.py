@@ -23,7 +23,7 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             # get the id of the user and set session
-            user_id = redis_ob.get("user:email:%s" %md5_constructor(form.cleaned_data['email']))
+            user_id = redis_ob.get("user:email:%s" %md5_constructor(form.cleaned_data['email']).hexdigest())
             request.session['user_id'] = user_id
             return HttpResponseRedirect("/")
     else:
@@ -33,9 +33,8 @@ def login(request):
     return render_to_response("login.html", {'form': form}, context_instance=RequestContext(request))
 
 def logout(request):
-    request.session.pop('user_id', None)
     request.session.flush()
-    return render_to_response('logout.html', {}, context_instance=RequestContext(request))
+    return HttpResponseRedirect("/")
 
 def settings(request):
     # if user is not logged in raise 404
