@@ -55,6 +55,7 @@ a{
 #ocean-floor .ocean-main{
     width:930px;
     margin:0 auto;
+    background:transparent url(images/fishies.gif) 0 90px no-repeat;
 }
 
 #ocean-floor .ocean-text{
