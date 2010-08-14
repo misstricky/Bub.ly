@@ -31,4 +31,8 @@ class LoginForm(forms.Form):
     email = forms.EmailField(required=True)
     password = forms.CharField(required=True, widget=forms.PasswordInput(render_value=False))
 
-
+    # checking if email and password matches
+    def clean(self):
+        user_id = redis_ob.get("user:email:%s" %md5_constructor(self.cleaned_data['email']))
+        if not user_id:
+            raise forms.ValidationError("Invalid user credentials")
