@@ -2,10 +2,23 @@
 
 /* ---------- Base Styles ---------- */
 
+body{
+    background:#fff;
+    font-size:14px;
+    line-height:16px;
+    color:#666;
+}
+
 a{
     text-decoration:none;
     font-weight:500;
+    color:#52a8db;
 }
+
+a:hover{
+    color:#3381aa;
+}
+
 
 /* ---------- Login Styles ---------- */
 
