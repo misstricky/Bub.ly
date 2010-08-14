@@ -23,9 +23,12 @@ def shorten_url(request):
         redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
     return HttpResponse(url_object.get_short_url())
 
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def file_upload(request):
     if not request.method == 'POST': raise Http404
     if not request.FILES: raise Http404
+    if not request.FILES.has_key('file'): raise Http404
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, 'files')):
         os.makedirs(os.path.join(settings.MEDIA_ROOT, 'files'))
     
