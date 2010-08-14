@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     (r'^_login/$', 'accounts.views.login'),
     (r'^_logout/$', 'accounts.views.logout'),
     (r'^_settings/$', 'accounts.views.settings'),
+    (r'^(?P<slug>[\w]+)/$', 'shortener.views.expand_url'),
 )
 
 if settings.DEBUG:
