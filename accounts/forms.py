@@ -43,4 +43,4 @@ class LoginForm(forms.Form):
         salt, hsh = user_password.split("$")
         if not hsh == sha_constructor(salt, self.cleaned_data['password']):
             raise forms.ValidationError("Invalid user credentials")
-        
+        return self.cleaned_data
