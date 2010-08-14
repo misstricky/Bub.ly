@@ -45,3 +45,9 @@ class LoginForm(forms.Form):
             if not hsh == sha_constructor(salt + self.cleaned_data['password']).hexdigest():
                 raise forms.ValidationError("Invalid user credentials")
             return self.cleaned_data
+
+class SettingsForm(forms.Form):
+    email = forms.EmailField(required=True)
+    password = forms.CharField(required=True, widget=forms.PasswordInput(render_value=False))
+
+

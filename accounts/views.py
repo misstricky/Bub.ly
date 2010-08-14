@@ -1,7 +1,11 @@
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from forms import RegisterForm, LoginForm
+from django.utils.hashcompat import md5_constructor
+from forms import RegisterForm, LoginForm, SettingsForm
+
+from connect_redis import get_client
+redis_ob = get_client()
 
 def register(request):
     if request.method == "POST":
@@ -30,4 +34,25 @@ def login(request):
 
 def logout(request):
     request.session.pop('user_id', None)
+    request.session.flush()
     return render_to_response('logout.html', {}, context_instance=RequestContext(request))
+
+def settings(request):
+    # if user is not logged in raise 404
+    if not request.session.has_key("user_id"): raise Http404
+    user_id = request.session["user_id"]
+    if request.method == "POST":
+        form = SettingsForm(request.POST)
+    elif request.method =="DELETE":
+        # delete user related data from redis
+        user_email = redis_ob.hget("user:%s" %user_id, "email")
+        redis_pipe = redis_ob.pipeline()
+        redis_pipe.delete(["user:email:%s" md5_constructor(user_email).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id])
+        redis_pipe.execute()
+        # logout the user
+        request.session.flush()
+        return HttpResponseRedirect("/")
+    else:
+        email = redis_ob.hget("user:%s" %user_id, "email")
+        form = SettingsForm(initial={'email': email})
+    return render_to_response('settings.html', {}, context_instance=RequestContext(request))
