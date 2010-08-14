@@ -103,5 +103,49 @@ a{
     font-weight:500;
 }
 
+#ocean-floor .ocean-form #id_email{
+    float:left;
+}
 
+#ocean-floor .ocean-form #id_password{
+    float:right;
+}
+
+#ocean-floor .ocean-form #register_button{
+    display:none;
+    width:307px;
+    height:59px;
+    background:url(images/ocean-signup-button.gif) top left no-repeat;
+    border:none;
+    text-indent:-999999px;
+    cursor: pointer;
+    cursor: hand;
+    margin:0 0 5px 185px;
+    font-weight:200;
+    text-shadow:none;
+}
+
+#ocean-floor .ocean-form #login_button{
+    width:307px;
+    height:59px;
+    background:url(images/ocean-login-button.gif) top left no-repeat;
+    border:none;
+    text-indent:-999999px;
+    cursor: pointer;
+    cursor: hand;
+    margin:0 0 5px 185px;
+    font-weight:200;
+    text-shadow:none;
+}
+
+#ocean-floor .ocean-form .log-in{ display:none; }
+
+#ocean-floor .ocean-form .sign-up, #ocean-floor .ocean-form .log-in{
+    text-align:center;
+    color:#cff5ff;
+    font-size:22px;
+    font-weight:300;
+}
+
+#ocean-floor .ocean-form .sign-up a, #ocean-floor .ocean-form .log-in a{ font-weight:500; text-shadow: #418bb3 1px 1px 2px; }
 
