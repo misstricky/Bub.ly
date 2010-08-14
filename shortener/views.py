@@ -29,7 +29,7 @@ def file_upload(request):
     file_data = request.FILES['file']
     sub = file_data.name.split('.')[-1]
     destination = open(os.path.join(settings.MEDIA_ROOT, 'files', temp_file_name+'.'+sub), 'wb+')
-     for chunk in file_data.chunks():
+    for chunk in file_data.chunks():
         destination.write(chunk)
     url = settings.SHORT_URL+"static/files/"+temp_file_name+'.'+sub
     url_object.save(url_id=url_id)
@@ -43,6 +43,10 @@ def expand_url(request, slug):
         url_id = int(slug, 36)
     except:
         raise Http404
+    long_url = redis_ob.hget("url:%d" %url_id, "url")
+    if not long_url: raise Http404
+    redis_ob.hincrby("url:%d" %url_id, "hits")
+    return HttpResponseRedirect(long_url)
 
 def home(request):
     try: 
