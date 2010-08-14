@@ -1,23 +1,28 @@
 """
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
-
-Replace these with more appropriate tests for your application.
+A few tests to check if basic functionalities are working properly
 """
 
 from django.test import TestCase
+from django.utils.hashcompat import md5_constructor
+from connect_redis import get_client
+redis_ob = get_client()
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
+class FunctionalityTest(TestCase):
+    # no fixtures to load
 
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
+    def test_register(self):
+        response = self.client.get('/')
+        self.failUnlessEqual(response.status_code, 200)
+        response = self.client.post('/_register/', {'email': 'yash888@gmail.com', 'password': '123456'}, follow=True)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.redirect_chain, [('http://testserver/', 302)])
+        self.assertEquals(True, redis_ob.exists("user:email:%s" %md5_constructor('yash888@gmail.com').hexdigest()))
+        # cant assert the user:1 because redis might already have a user:1
+        # and we dont clear redis data 
 
->>> 1 + 1 == 2
-True
-"""}
+    def test_login(self):
+        response = self.client.post('/_login/', {'email': 'yash888@gmail.com', 'password': '123456'}, follow=True)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.redirect_chain, [('http://testserver/', 302)])
+        
 
