@@ -16,15 +16,15 @@
 	</div>{# main top #}
 	
 	<div id="inter-main">
-		<div class="inter-main-inner">
+		<div class="settings">
       <form action="" method="POST" accept-charset="utf-8">
-        {{ form }}
+        {{ form.as_p }}
         <p>API key: {{ user_data.api_key }}</p>
         {% csrf_token %}
-        <p><input type="submit" value="Save &rarr;"></p>
-        <a id="user_delete" href="/delete/">Delete Account</a>
+        <p><input type="submit" value="Save &rarr;" class="save"></p>
+        <p class="user-delete"><a id="user_delete" href="/delete/">(Delete Account)</a></p>
       </form>
-    </div>{# end-inter-inner #}
+	</div>{# end-settings #}
   </div>{# end-inter-main #}
 
 </div>

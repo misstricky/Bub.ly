@@ -58,6 +58,7 @@ a:hover{
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    margin:0 0 0 10px;
 }
 
 #main-top .main-menu a:hover{
@@ -70,6 +71,7 @@ a:hover{
     font-size:24px;
     line-height:30px;
     overflow:hidden;
+    border-bottom:1px solid #ddd;
 }
 
 #inter-main .inter-main-inner{
@@ -201,6 +203,49 @@ a:hover{
     padding:8px 10px;
 }
 
+/* ---------- Main Settings Styles ---------- */
+
+.settings{
+    width:500px;
+    margin:5px auto 20px auto;
+}
+
+.settings p{
+    margin:10px 0;
+}
+
+
+.settings #id_email, .settings #id_password{
+    border:1px solid #fff;
+    padding:2px 5px;
+    color:#666;
+    font-size:20px;
+    -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+
+.settings .save{
+    background:url(images/save.gif) top left no-repeat;
+    width:153px;
+    height:64px;
+    text-indent:-99999px;
+    border:none;
+    cursor:pointer;
+    cursor:hand;
+    margin:25px auto 15px auto;
+    display:block;
+}
+
+.settings .user-delete{
+    text-align:center;
+}
+
+.settings #user_delete{
+    color:#333;
+    font-size:13px;
+    text-align:center;
+}
 
 /* ---------- Login Styles ---------- */
 
