@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 from models import *
+from utils import to36
 from connect_redis import get_client
 redis_ob = get_client()
 
@@ -22,6 +23,11 @@ def file_upload(request):
     if not request.FILES: raise Http404
     if not os.path.exists(os.path.join(settings.MEDIA_ROOT, 'files')):
         os.makedirs(os.path.join(settings.MEDIA_ROOT, 'files'))
+    
+    url_id = redis_ob.incr('counter:url')
+    temp_file_name = to36(url_id)
+    file_data = request.FILES['file']
+    
 
 def home(request):
     try: 
