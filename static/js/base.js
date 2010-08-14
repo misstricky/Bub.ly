@@ -20,7 +20,8 @@ $(function(){
             url: '/file_upload/',
             success:   function(data) {
                 $('#upload_form input[type=file]').val("");
-                // need to show the user the result
+                // alert with facebox containing the short url
+                $.facebox("<input type='text' value='"+data+"'>");
             }
         });
         return false;
