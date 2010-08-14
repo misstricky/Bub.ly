@@ -28,7 +28,7 @@ def login(request):
             return HttpResponseRedirect("/")
     else:
         # if user is already logged in redirect to /
-        if request.session['user_id']: return HttpResponseRedirect("/")
+        if request.session.has_key('user_id'): return HttpResponseRedirect("/")
         form = LoginForm()
     return render_to_response("login.html", {'form': form}, context_instance=RequestContext(request))
 
