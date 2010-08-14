@@ -17,6 +17,9 @@ def shorten_url(request):
         redis_ob.lpush("user:urls:%d" %request.session['user_id'], "url:"+str(url_object.id))
     return HttpResponse(url_object.get_short_url())
 
+def file_upload(request):
+    pass
+
 def home(request):
     try: 
         page = int(request.GET.get('page', 1))
