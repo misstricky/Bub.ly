@@ -15,7 +15,14 @@ def register(request):
     return render_to_response("register.html", {'form': form}, context_instance=RequestContext(request))
 
 def login(request):
-    form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            # check if the user email exists and check password and then set session
+            request.session['user_id'] = user_id
+            return HttpResponseRedirect("/")
+    else:
+        form = LoginForm()
     return render_to_response("login.html", {'form': form}, context_instance=RequestContext(request))
 
 def logout(request):
