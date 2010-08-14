@@ -18,7 +18,8 @@ def login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            # check if the user email exists and check password and then set session
+            # get the id of the user and set session
+            user_id = redis_ob.get("user:email:%s" %md5_constructor(form.cleaned_data['email']))
             request.session['user_id'] = user_id
             return HttpResponseRedirect("/")
     else:
