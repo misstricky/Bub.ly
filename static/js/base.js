@@ -9,4 +9,21 @@ $(function(){
         return false;
     });
     
+    //login/sign up button switch
+    $('.sign-up-link').click(function() {
+      $('#login_button').hide();
+      $('#register_button').fadeIn();
+      $('.sign-up').hide();
+      $('.log-in').show();
+      return false;
+    });
+
+    $('.login-link').click(function() {
+      $('#register_button').hide();
+      $('#login_button').fadeIn();
+      $('.sign-up').show();
+      $('.log-in').hide()
+      return false;
+    });
+    
 });
