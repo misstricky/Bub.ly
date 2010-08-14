@@ -13,6 +13,9 @@ $(function(){
     //relative time script
     $(".timeago").timeago();
     
+    // facebox
+    $('a[rel*=facebox]').facebox();
+    
     // upon selecting the file fire off the request
     $('#upload_form input[type=file]').change(function(e){
         $(".droplet").hide();

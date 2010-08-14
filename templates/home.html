@@ -34,7 +34,7 @@
 			</div>{# end-droplet-area #}
 			<div id="info">
 				<p>
-					Click to upload a file! Its shortened url will appear. Download our <a href="#">droplet</a> to upload files directly from your dock (the shortend url will copy to your clipboard)!
+					Click to upload a file! Its shortened url will appear. Download our <a href="#download_droplet" rel="facebox">droplet</a> to upload files directly from your dock (the shortend url will copy to your clipboard)!
 				</p>
 				<p>
 					You can also use our handy <a href="javascript:void((function(){window.open('{{short_url}}shorten_url/?url='+encodeURIComponent(window.location.href)+'&login=1', 'bub.ly', 'status=no,resizable=no,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=875,height=520,left=0,top=0')})());">bookmarklet</a> in your bookmarks bar to shorten links!
@@ -65,5 +65,13 @@
 	  {% endfor %}
 		</tbody>
 	</table>
+	<div id="download_droplet" style="display:none;">
+	  <p><a href="{{ MEDIA_URL }}bubly.zip">Click here</a> to download our droplet. After you download the app please 
+	     run these commands in your terminal.
+	     <pre>
+	       $ echo {{ user_api_key }} > ~/.bubly
+	    </pre>   
+	  </p>
+  </div>
 </dviv>{# container #}
 {% endblock %}
