@@ -14,12 +14,16 @@ $(function(){
     
     // upon selecting the file fire off the request
     $('#upload_form input[type=file]').change(function(e){
+        $(".droplet").hide();
+        $(".droplet_spinner").show();
         $("#upload_form").ajaxSubmit({
             dataType:  'html',
             iframe: true,
             url: '/file_upload/',
             success:   function(data) {
                 $('#upload_form input[type=file]').val("");
+                $(".droplet_spinner").hide();
+                $(".droplet").show();
                 // alert with facebox containing the short url
                 $.facebox("<input type='text' value='"+data+"'>");
             }

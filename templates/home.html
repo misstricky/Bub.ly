@@ -24,14 +24,10 @@
 		<div class="inter-main-inner">
 			<div id="droplet-area">
 				  <form id="upload_form" action="/file_upload/" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
+				  <img src="{{ MEDIA_URL }}facebox/loading.gif" class="droplet_spinner">
 				  <div class="droplet">
 			      <input type="file" name="file" class="file">
 			    {% csrf_token %}
-					<script type="text/javascript" language="javascript">
-					// <![CDATA[
-					SI.Files.stylizeAll();
-					// ]]>
-					</script>
 					</div>{# end-droplet #}
 					</form>
 			</div>{# end-droplet-area #}
@@ -63,7 +59,7 @@
 				<td class="full_url">{{ url.url|urlizetrunc:30 }}</td>
 				<td class="when timeago" title="{{ url.created_at|to_datetime }}">{{ url.created_at|to_datetime }}</td>
 		        <td class="hits">{{ url.hits }}</td>
-		        <td class="delete"><a href="{{ url.get_short_url }}" class="link_delete"><img src="/static/css/images/delete.gif"></a></td>
+		        <td class="delete"><a href="{{ url.get_short_url }}" class="link_delete"><img src="{{ MEDIA_URL }}css/images/delete.gif"></a></td>
 			</tr>
 	  {% endfor %}
 		</tbody>
