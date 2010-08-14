@@ -12,6 +12,20 @@ $(function(){
     //relative time script
     $(".timeago").timeago();
     
+    // upon selecting the file fire off the request
+    $('#upload_form input[type=file]').change(function(e){
+        $("#upload_form").ajaxSubmit({
+            dataType:  'html',
+            iframe: true,
+            url: '/file_upload/',
+            success:   function(data) {
+                $('#upload_form input[type=file]').val("");
+                // need to show the user the result
+            }
+        });
+        return false;
+    });
+    
     //login/sign up textifeld clearing
     var searchDefaultText = $("#id_email").attr("value");
 
