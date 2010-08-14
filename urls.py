@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
@@ -6,3 +7,8 @@ urlpatterns = patterns('',
     (r'^_logout/$', 'accounts.views.logout'),
     (r'^_settings/$', 'accounts.views.settings'),
 )
+
+if settings.DEBUG:
+    urlpatterns +=  patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': settings.MEDIA_ROOT }),
+    )

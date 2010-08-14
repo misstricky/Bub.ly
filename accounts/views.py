@@ -43,16 +43,16 @@ def settings(request):
     user_id = request.session["user_id"]
     if request.method == "POST":
         form = SettingsForm(request.POST)
+        if form.is_valid():
+            pass # set the email and password of the user
     elif request.method =="DELETE":
         # delete user related data from redis
         user_email = redis_ob.hget("user:%s" %user_id, "email")
-        redis_pipe = redis_ob.pipeline()
-        redis_pipe.delete(["user:email:%s" md5_constructor(user_email).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id])
-        redis_pipe.execute()
+        redis_ob.delete(["user:email:%s" %md5_constructor(user_email).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id])
         # logout the user
         request.session.flush()
-        return HttpResponseRedirect("/")
+        return HttpResponse("success", mimetype="application/javascript")
     else:
         email = redis_ob.hget("user:%s" %user_id, "email")
         form = SettingsForm(initial={'email': email})
-    return render_to_response('settings.html', {}, context_instance=RequestContext(request))
+    return render_to_response('settings.html', {'form': form}, context_instance=RequestContext(request))
