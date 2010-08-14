@@ -33,14 +33,15 @@ class LoginForm(forms.Form):
 
     # checking if email and password matches
     def clean(self):
-        # check if email exists
-        user_id = redis_ob.get("user:email:%s" %md5_constructor(self.cleaned_data['email']))
-        if not user_id:
-            raise forms.ValidationError("Invalid user credentials")
-        # now check if the password matches
-        user_password = redis_ob.hget("user:%d" %user_id, "password")
-        # mimic the django auth password match code
-        salt, hsh = user_password.split("$")
-        if not hsh == sha_constructor(salt, self.cleaned_data['password']):
-            raise forms.ValidationError("Invalid user credentials")
-        return self.cleaned_data
+        if self.cleaned_data.has_key('email') and self.cleaned_data.has_key('password'):
+            # check if email exists
+            user_id = redis_ob.get("user:email:%s" %md5_constructor(self.cleaned_data['email']))
+            if not user_id:
+                raise forms.ValidationError("Invalid user credentials")
+            # now check if the password matches
+            user_password = redis_ob.hget("user:%d" %user_id, "password")
+            # mimic the django auth password match code
+            salt, hsh = user_password.split("$")
+            if not hsh == sha_constructor(salt, self.cleaned_data['password']):
+                raise forms.ValidationError("Invalid user credentials")
+            return self.cleaned_data
