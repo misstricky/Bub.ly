@@ -1,6 +1,7 @@
 # nope we're using redis :)
 # mimic a django like model with some methods to fetch data
 
+import time
 from connect_redis import get_client
 redis_ob = get_client()
 
@@ -18,7 +19,7 @@ class UrlModel(object):
         self.is_file = url_data.get('is_file', False)
 
     def set_counter_url(self):
-        redis_ob.set(key_counter, 14000)
+        redis_ob.set(self.key_counter, 14000)
         return 14000
 
     @classmethod

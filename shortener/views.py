@@ -1,8 +1,21 @@
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
+from models import *
 from connect_redis import get_client
 redis_ob = get_client()
+
+def shorten_url(request):
+    url = request.GET.get('url', None)
+    # validate the url here
+    if not url: raise Http404
+    url_object = UrlModel(url_data={'url':url})
+    url_object.save()
+    # if authenticated user set url to his account
+    if request.session.has_key("user_id"):
+        redis_ob.lpush("user:urls:%d" %request.session['user_id'], "url:"+str(url_object.id))
+    return HttpResponse(url_object.get_short_url())
 
 def home(request):
     try: 
