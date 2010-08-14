@@ -29,11 +29,13 @@ $(function(){
                 $(".droplet_spinner").hide();
                 $(".droplet").show();
                 // alert with facebox containing the short url
-                $.facebox("<input type='text' value='"+data+"'>");
+                $.facebox("<input type='text' class='upload-url' value='"+data+"'>");
             }
         });
         return false;
     });
+    
+    $("upload-url").select();
     
     // delete entry
     $(".link_delete").click(function(){

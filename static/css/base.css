@@ -134,6 +134,15 @@ a:hover{
     display:none;
 }
 
+.upload-url{
+    background:#232323;
+    font-size:24px;
+    color:#fff;
+    border:none;
+    margin:5px auto;
+    display:block;
+}
+
 #inter-main .inter-main-inner #info{
     float:left;
     width:700px;
