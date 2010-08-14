@@ -6,6 +6,7 @@ from django.conf import settings
 from django.utils.encoding import force_unicode
 from django.contrib.sessions.backends.base import SessionBase, CreateError
 from connect_redis import get_client
+redis_ob = get_client()
 
 class SessionStore(SessionBase):
     """
