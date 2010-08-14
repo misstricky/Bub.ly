@@ -23,8 +23,11 @@ def login(request):
             request.session['user_id'] = user_id
             return HttpResponseRedirect("/")
     else:
+        # if user is already logged in redirect to /
+        if request.session['user_id']: return HttpResponseRedirect("/")
         form = LoginForm()
     return render_to_response("login.html", {'form': form}, context_instance=RequestContext(request))
 
 def logout(request):
-    pass
+    request.session.pop('user_id', None)
+    return render_to_response('logout.html', {}, context_instance=RequestContext(request))
