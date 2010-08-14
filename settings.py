@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'accounts',
+    'shortener',
 )
 
 REDIS_HOST = '127.0.0.1'
