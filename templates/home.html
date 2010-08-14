@@ -12,6 +12,29 @@
 			<a href="/_logout">Logout</a>
 		</div>{# end-main-menu #}
 	</div>{# main top #}
+	
+	<div id="inter-main">
+		<div class="inter-main-inner">
+			<div id="droplet-area">
+				  <form id="upload_form" action="/file_upload/" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
+				  <div class="droplet">
+			      <input type="file" name="file" class="file">
+			    {% csrf_token %}
+					</div>{# end-droplet #}
+					</form>
+			</div>{# end-droplet-area #}
+			<div id="info">
+				<p>
+					Click to upload a file! Its shortened url will appear. Download our <a href="#">droplet</a> to upload files directly from your dock (the shortend url will copy to your clipboard)!
+				</p>
+				<p>
+					You can also use our handy <a href="javascript:void((function(){window.open('http://localhost:8000/shorten_url/?url='+encodeURIComponent(window.location.href), 'bub.ly', 'status=no,resizable=no,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=875,height=470,left=0,top=0')})());">bookmarklet</a> in your bookmarks bar to shorten links!
+				</p>
+			</div>
+			
+		</div>{# end-inter-inner #}
+		
+	</div>{# end-inter-main #}
 
 </dviv>{# container #}
 {% endblock %}
