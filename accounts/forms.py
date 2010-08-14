@@ -41,6 +41,6 @@ class LoginForm(forms.Form):
         user_password = redis_ob.hget("user:%d" %user_id, "password")
         # mimic the django auth password match code
         salt, hsh = user_password.split("$")
-         if not hsh == sha_constructor(salt, self.cleaned_data['password']):
-                raise forms.ValidationError("Invalid user credentials")
+        if not hsh == sha_constructor(salt, self.cleaned_data['password']):
+            raise forms.ValidationError("Invalid user credentials")
         
