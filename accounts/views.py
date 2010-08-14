@@ -1,7 +1,7 @@
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from forms import RegisterForm
+from forms import RegisterForm, LoginForm
 
 def register(request):
     if request.method == "POST":
@@ -15,7 +15,8 @@ def register(request):
     return render_to_response("register.html", {'form': form}, context_instance=RequestContext(request))
 
 def login(request):
-    pass
+    form = LoginForm()
+    return render_to_response("login.html", {'form': form}, context_instance=RequestContext(request))
 
 def logout(request):
     pass
