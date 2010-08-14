@@ -55,13 +55,16 @@ def expand_url(request, slug):
         redis_ob.hincrby("url:%d" %url_id, "hits")
         return HttpResponseRedirect(long_url)
     elif request.method == "DELETE":
-        user_id = request.session["user_id"]
-        if redis_ob.hexists("user:%s" %str(user_id), "email") and \
-           "url:"+str(url_id) in redis_ob.lrange("user:urls:%s" %str(user_id), 0, -1):
-           redis_pipe = redis_ob.pipeline()
-           redis_pipe.lrem("user:urls:%s" %str(user_id), "url:"+str(url_id)).delete("url:%s" %str(url_id))
-           redis_pipe.execute()
-           return HttpResponse("success")
+        if request.session.has_key("user_id"):
+            # check if user is logged in and user owns the entry 
+            # url:14500 in user:urls:1
+            user_id = request.session["user_id"]
+            if redis_ob.hexists("user:%s" %str(user_id), "email") and \
+               "url:"+str(url_id) in redis_ob.lrange("user:urls:%s" %str(user_id), 0, -1):
+               redis_pipe = redis_ob.pipeline()
+               redis_pipe.lrem("user:urls:%s" %str(user_id), "url:"+str(url_id)).delete("url:%s" %str(url_id))
+               redis_pipe.execute()
+               return HttpResponse("success")
     raise Http404
 
 def home(request):
