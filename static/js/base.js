@@ -64,4 +64,18 @@ $(function(){
       return false;
     });
     
+    //some table crap
+    $(".home table tbody tr").hover(
+      function () {
+        $(this).addClass("table-hover");
+        $(".home table tbody tr:even td").removeClass("table-even");
+      }, 
+      function () {
+        $(this).removeClass("table-hover");
+        $(".home table tbody tr:even td").addClass("table-even");
+      }
+    );
+    
+    $(".home table tbody tr:even td").addClass("table-even");
+    
 });
