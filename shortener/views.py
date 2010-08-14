@@ -27,7 +27,16 @@ def file_upload(request):
     url_id = redis_ob.incr('counter:url')
     temp_file_name = to36(url_id)
     file_data = request.FILES['file']
-    
+    sub = file_data.name.split('.')[-1]
+    destination = open(os.path.join(settings.MEDIA_ROOT, 'files', temp_file_name+'.'+sub), 'wb+')
+     for chunk in file_data.chunks():
+        destination.write(chunk)
+    url = settings.SHORT_URL+"static/files/"+temp_file_name+'.'+sub
+    url_object.save(url_id=url_id)
+    # if authenticated user set url to his account
+    if request.session.has_key("user_id"):
+        redis_ob.lpush("user:urls:%d" %request.session['user_id'], "url:"+str(url_object.id))
+    return HttpResponse(url_object.get_short_url())
 
 def home(request):
     try: 

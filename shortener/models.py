@@ -17,7 +17,8 @@ class UrlModel(object):
     key_prefix = "url:"
     key_counter = "counter:url"
 
-    def __init__(self, url_data={}):
+    def __init__(self, url_data={}, url_id=None):
+        self.id = url_id
         self.url = url_data.get('url', None)
         self.hits = url_data.get('hits', 0)
         self.created_at = url_data.get('created_at', time.time()+7*60*60)
@@ -38,8 +39,8 @@ class UrlModel(object):
         if not self.id: raise UrlNotSaved
         return '%s%s/' %(settings.SHORT_URL, to36(int(self.id)))
 
-    def save(self):
-        url_id = redis_ob.incr(self.key_counter)
+    def save(self, url_id=None):
+        if not url_id: url_id = redis_ob.incr(self.key_counter)
         # if url id is less than 14000 set to 14000 so that they appear better
         if url_id < 14000: url_id = self.set_counter_url()
         while redis_ob.hexists(self.key_prefix+str(url_id), "url"):
