@@ -4,6 +4,12 @@ from django.utils.hashcompat import md5_constructor, sha_constructor
 from connect_redis import get_client
 redis_ob = get_client()
 
+def generate_api_key(user_email):
+    api_key = md5_constructor("%s%s" %(str(user_email), str(random.random))).hexdigest()
+    while redis_ob.exists("user:api_key:%s" %api_key):
+        api_key = md5_constructor("%s%s" %(str(user_email), str(random.random))).hexdigest()
+    return api_key
+
 class RegisterForm(forms.Form):
     email = forms.EmailField(required=True)
     password = forms.CharField(required=True, widget=forms.PasswordInput(render_value=False))
@@ -22,7 +28,12 @@ class RegisterForm(forms.Form):
         hsh = sha_constructor(salt +self.cleaned_data["password"]).hexdigest()
         # using redis pipeline to make it happen as a transaction.
         redis_pipe = redis_ob.pipeline()
-        redis_pipe.set("user:email:%s" %md5_constructor(self.cleaned_data['email']).hexdigest(), user_id).hmset("user:%d" %user_id, {"email": self.cleaned_data["email"], "password": "%s$%s" %(salt, hsh), "api_key": md5_constructor(self.cleaned_data['email']).hexdigest()})
+        api_key = generate_api_key(self.cleaned_data['email'])
+        redis_pipe.set("user:email:%s" %md5_constructor(self.cleaned_data['email']).hexdigest(), user_id)\
+                  .hmset("user:%d" %user_id, {"email": self.cleaned_data["email"], 
+                                              "password": "%s$%s" %(salt, hsh), 
+                                              "api_key":api_key})\
+                  .set("user:api_key:%s" %(api_key), user_id)
         redis_pipe.execute()
         return user_id
 

@@ -2,9 +2,10 @@ key                           -                   data
 ==================================================================
 counter:user                  -                   1
 user:email:<md5(email)>       -                 <user_id>  eg: 1
+user:apikey:<xxx>             -                 <user_id>  eg: 1
 user:<user_id>                -   hash {"email": "some@some.com",
                                        "password": "s3fdd$jlh32hwk32k23k",
-                                       "api_key": "md5(email)"}
+                                       "api_key": "xxxxxxxxx"}
 user:urls:<user_id>           -      [14345, 14899, 15234, 19002] -> list
 
 
