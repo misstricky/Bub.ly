@@ -41,6 +41,7 @@ def settings(request):
     # if user is not logged in raise 404
     if not request.session.has_key("user_id"): raise Http404
     user_id = request.session["user_id"]
+    user_data = redis_ob.hgetall("user:%s" %user_id)
     if request.method == "POST":
         form = SettingsForm(request.POST)
         if form.is_valid():
@@ -53,6 +54,5 @@ def settings(request):
         request.session.flush()
         return HttpResponse("success", mimetype="application/javascript")
     else:
-        email = redis_ob.hget("user:%s" %user_id, "email")
-        form = SettingsForm(initial={'email': email})
-    return render_to_response('settings.html', {'form': form}, context_instance=RequestContext(request))
+        form = SettingsForm(initial={'email': user_data.get("email")})
+    return render_to_response('settings.html', {'form': form, 'user_data': user_data}, context_instance=RequestContext(request))

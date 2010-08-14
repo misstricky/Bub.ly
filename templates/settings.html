@@ -2,13 +2,32 @@
 
 {% block title %}- Your Account{% endblock %}
 
-{% block content %}  
-<form action="" method="POST" accept-charset="utf-8">
-  {{ form }}
-  {% csrf_token %}
-  <p><input type="submit" value="Save &rarr;"></p>
-  <a id="user_delete" href="/delete/">Delete Account</a>
-</form>
+{% block html_class %}html-home{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+<div id="container">
+	<div id="main-top">
+		<a class="main-title" href="/">Bub.ly</a>
+		<div class="main-menu">
+		  <a href="/_settings/">Settings</a>
+			<a href="/_logout/">Logout</a>
+		</div>{# end-main-menu #}
+	</div>{# main top #}
+	
+	<div id="inter-main">
+		<div class="inter-main-inner">
+      <form action="" method="POST" accept-charset="utf-8">
+        {{ form }}
+        <p>API key: {{ user_data.api_key }}</p>
+        {% csrf_token %}
+        <p><input type="submit" value="Save &rarr;"></p>
+        <a id="user_delete" href="/delete/">Delete Account</a>
+      </form>
+    </div>{# end-inter-inner #}
+  </div>{# end-inter-main #}
+
+</div>
 {% endblock %}
 
 
