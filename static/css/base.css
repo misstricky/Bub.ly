@@ -99,6 +99,7 @@ a:hover{
     display:block;
     overflow:hidden;
     cursor: pointer;
+    cursor: hand;
 }
 
 
