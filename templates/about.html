@@ -45,7 +45,8 @@
       </pre>
       
       <h6>Upload Files</h6>
-      <p>All requests to upload files are POST. The trailing slash to the url
+      <p>All requests to upload files are POST and must be authenticated with
+         API key. The trailing slash to the url
         is important as redirects does not carry POST data forward.</p>
       <pre>
         curl -d "api_key=xxxx&file=@filename.jpg" http://bub.ly/file_upload/ 
