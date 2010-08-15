@@ -140,6 +140,8 @@ a:hover{
     margin:5px auto;
     display:block;
     color:#555;
+    width:350px;
+    text-align:center;
 }
 
 #inter-main .inter-main-inner #info{
@@ -233,6 +235,12 @@ a:hover{
 	border-radius:5px;
 }
 
+.settings .buttons{
+    overflow:hidden;
+    margin:25px auto 15px auto;
+    width:340px;
+}
+
 .settings .save{
     background:url(images/save.gif) top left no-repeat;
     width:153px;
@@ -243,6 +251,19 @@ a:hover{
     cursor:hand;
     margin:25px auto 15px auto;
     display:block;
+}
+
+.settings .home{
+    background:url(images/home.gif) top left no-repeat;
+    width:153px;
+    height:54px;
+    text-indent:-99999px;
+    border:none;
+    cursor:pointer;
+    cursor:hand;
+    margin-right:15px;
+    display:block;
+    float:left;
 }
 
 .settings .api-key{
