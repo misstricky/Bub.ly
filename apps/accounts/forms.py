@@ -21,8 +21,7 @@ class RegisterForm(forms.Form):
     password = forms.CharField(required=True, widget=forms.PasswordInput(render_value=False))
 
     def clean_email(self):
-        user = redis_ob.exists("user:email:%s" %md5_constructor(self.cleaned_data['email']))
-        if user:
+        if redis_ob.exists("user:email:%s" %md5_constructor(self.cleaned_data['email']).hexdigest()):
             raise forms.ValidationError("Email already exists")
         return self.cleaned_data['email']
 

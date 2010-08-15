@@ -95,7 +95,7 @@ def home(request):
         user_id = request.session["user_id"]
         if redis_ob.hexists("user:%s" %str(user_id), "email"):
             user_api_key = redis_ob.hget("user:%s" %str(user_id), "api_key")
-            url_ids = redis_ob.lrange("user:urls:%s" %str(user_id), (page-1)*50, page*50)
+            url_ids = redis_ob.lrange("user:urls:%s" %str(user_id), (page-1)*settings.DEFAULT_PAGINATION, page*settings.DEFAULT_PAGINATION)
             if page > 1 and not url_ids: raise Http404
             urls = []
             for url_id in url_ids:

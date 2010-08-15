@@ -75,3 +75,4 @@ REDIS_HOST = '127.0.0.1'
 REDIS_PORT = 6379
 SESSION_ENGINE = "accounts.redis_session"
 SHORT_URL = "http://localhost:8000/"
+DEFAULT_PAGINATION = 5
