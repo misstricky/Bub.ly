@@ -23,6 +23,7 @@ class UrlModel(object):
         self.hits = url_data.get('hits', 0)
         self.created_at = url_data.get('created_at', time.time()+7*60*60)
         self.is_file = url_data.get('is_file', False)
+        self.file_name = url_data.get('file_name', None)
 
     def set_counter_url(self):
         redis_ob.set(self.key_counter, 14000)
@@ -53,5 +54,6 @@ class UrlModel(object):
         redis_ob.hmset(self.key_prefix+str(url_id), {'url' : self.url, 
                                                     'hits' : self.hits,
                                                  'is_file' : self.is_file,
-                                               'created_at': self.created_at})
+                                              'created_at' : self.created_at,
+                                               'file_name' : self.file_name})
 

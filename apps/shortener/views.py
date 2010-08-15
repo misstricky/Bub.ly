@@ -55,7 +55,7 @@ def file_upload(request):
     for chunk in file_data.chunks():
         destination.write(chunk)
     url = settings.SHORT_URL+"static/files/"+temp_file_name+'.'+sub
-    url_object = UrlModel(url_data={'url':url,'is_file':True})
+    url_object = UrlModel(url_data={'url':url,'is_file':True, 'file_name':temp_file_name+'.'+sub})
     url_object.save(url_id=url_id)
     # if authenticated user set url to his account
     if request.session.has_key("user_id"):
