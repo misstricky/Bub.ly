@@ -23,6 +23,10 @@ EXTERNAL DEPENDENCIES:
 USING DROPLET TO UPLOAD FILES
 
 RUNNING pyres message queue:
+
+ - pyres is a message queue built on redis and python. (http://github.com/binarydud/pyres)
+   The use of pyres is completely optional for this project. 
+
  - INSTALLATION
  
     $ sudo pip install boto==1.9b pyres==0.9 itty==0.6.4 pystache==0.2.0 redis==2.0.0
@@ -35,5 +39,9 @@ RUNNING pyres message queue:
    there is a job to delete the file from S3 when the entry is killed by user.
  
   $ pyres_worker fileupload filedelete
+  
+  This starts a worker which polls on fileupload and filedelete queue. The 
+  current file upload view needs to place the job into the queue which is 
+  currently not implemented.
 
 
