@@ -22,6 +22,7 @@ EXTERNAL DEPENDENCIES:
    
 USING DROPLET TO UPLOAD FILES
 
+For Optional Amazon S3 Hosting for files:
 RUNNING pyres message queue:
 
  - pyres is a message queue built on redis and python. (http://github.com/binarydud/pyres)

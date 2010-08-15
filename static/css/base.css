@@ -29,7 +29,7 @@ a:hover{
 }
 
 #main-top{
-    background:url(images/main-top-bg.gif) repeat-x top left;
+    background:url(images/main-top-bg2.gif) repeat-x top left;
     height:44px;
     padding:10px 20px 0 20px;    
     overflow:hidden;
@@ -94,7 +94,7 @@ a:hover{
 .html-home .droplet{
     width:153px;
     height:64px;
-    background:url(images/upload.gif) no-repeat top left;
+    background:url(images/upload-full.gif) no-repeat top left;
     
     display:block;
     overflow:hidden;
@@ -125,7 +125,7 @@ a:hover{
 }
 *.html-home .droplet:hover{
     color:#fff;
-    background:url(images/upload-hover.gif) no-repeat top left;
+    background:url(images/upload-full.gif) no-repeat left -64px;
     cursor: pointer;
     cursor: hand;
 }
@@ -239,6 +239,15 @@ a:hover{
 }
 /* ---------- Main Settings Styles ---------- */
 
+.settings-fish{
+    background:#fff url(images/settings-fish.gif) top left no-repeat;
+    text-indent:-99999px;
+    width:122px;
+    height:95px;
+    margin:20px auto;
+    display:block;
+}
+
 .settings{
     width:600px;
     margin:5px auto 20px auto;
@@ -251,7 +260,7 @@ a:hover{
 .settings label, .settings .api-label{
     float:left;
     display:block;
-    width:175px;
+    width:180px;
     font-weight:400;
 }
 
@@ -393,9 +402,9 @@ a:hover{
 #sky-header .sky-title{
     text-indent:-999999px;
     display:block;
-    width:327px;
-    height:111px;
-    background:url(images/sky-title-2.gif) no-repeat top left;
+    width:438px;
+    height:116px;
+    background:url(images/sky-title-7.gif) no-repeat top left;
     margin:0 auto;
 }
 

@@ -17,7 +17,7 @@ $(function(){
     $('a[rel*=facebox]').facebox();
     $("#bookmarklet").tipsy({gravity: 's'});
     $("#bookmarklet").click(function(){
-        $.facebox("Please drag the bookmarklet into the bookmarklet bar!");
+        $.facebox("Please drag the bookmarklet into your browser's bookmarks bar!");
         return false;
     })
     
