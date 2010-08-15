@@ -1,35 +1,35 @@
-{% extends "base.html" %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-{% block title %}- Bookmarklet{% endblock %}
-
-{% block html_class %}html-home{% endblock %}
-{% block body_class %}home{% endblock %}
-
-{% block extra_head %}
-<script type="text/javascript" charset="utf-8">
-  $(function(){
-    $(".short_url").select();
-  });
-</script>
-{% endblock %}
-
-{% block content %}
-<div id="container">
-	<div id="main-top">
-		<a class="main-title" href="/">Bub.ly</a>
-		<div class="main-menu">
-		  <a href="/">Home</a>
-			<a href="/_logout/">Logout</a>
-		</div>{# end-main-menu #}
-	</div>{# main top #}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="{% block html_class %}{% endblock %}">
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	
-	<div id="inter-main">
-		<div class="settings">
-		  <input value="{{ link }}" class="short_url">
-	</div>{# end-settings #}
-  </div>{# end-inter-main #}
-
-</div>
-{% endblock %}
-
-
+    <title>Bub.ly {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/base.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{{ MEDIA_URL }}facebox/facebox.css" type="text/css" media="all"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="{{ MEDIA_URL }}js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ MEDIA_URL }}js/jquery.tipsy.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ MEDIA_URL }}js/facebox.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ MEDIA_URL }}js/timeago.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ MEDIA_URL }}js/base.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="http://use.typekit.com/zpy0qla.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
+	
+	<script type="text/javascript" charset="utf-8">
+	  $(function(){
+	    $(".short_url").select();
+	  });
+	</script>
+	
+  </head>
+	<body class="{% block body_class %}bookmarklet{% endblock %}">
+  		{% block content %}
+		<div id="container">
+			<input value="{{ link }}" class="short_url">
+		</div>
+		{% endblock %}
+	</body>
+</html>
