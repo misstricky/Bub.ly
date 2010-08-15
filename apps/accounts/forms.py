@@ -5,9 +5,9 @@ from connect_redis import get_client
 redis_ob = get_client()
 
 def generate_api_key(user_email):
-    api_key = md5_constructor("%s%s" %(str(user_email), str(random.random))).hexdigest()
+    api_key = md5_constructor("%s%s" %(str(user_email), str(random.random()))).hexdigest()
     while redis_ob.exists("user:api_key:%s" %api_key):
-        api_key = md5_constructor("%s%s" %(str(user_email), str(random.random))).hexdigest()
+        api_key = md5_constructor("%s%s" %(str(user_email), str(random.random()))).hexdigest()
     return api_key
 
 def generate_password(password):

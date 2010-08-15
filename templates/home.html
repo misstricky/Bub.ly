@@ -47,7 +47,7 @@
 					Click to upload a file! Its shortened url will appear. Download our <a href="#download_droplet" rel="facebox">droplet</a> to upload files directly from your dock (the shortend url will copy to your clipboard)!
 				</p>
 				<p>
-					You can also use our handy <a href="javascript:void((function(){window.open('{{short_url}}shorten_url/?url='+encodeURIComponent(window.location.href)+'&login=1', 'bub.ly', 'status=no,resizable=no,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=875,height=520,left=0,top=0')})());">bookmarklet</a> in your bookmarks bar to shorten links!
+					You can also use our handy <a href="javascript:void((function(){window.open('{{short_url}}shorten_url/?url='+encodeURIComponent(window.location.href)+'&login=1', 'bub.ly', 'status=no,resizable=no,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=875,height=520,left=0,top=0')})());" original-title="Drag this to your bookmarklet bar" id="bookmarklet">bookmarklet</a> in your bookmarks bar to shorten links!
 				</p>
 			</div>
 		</div>{# end-inter-inner #}
@@ -72,6 +72,8 @@
 		        <td class="hits">{{ url.hits }}</td>
 		        <td class="delete"><a href="{{ url.get_short_url }}" class="link_delete"><img src="{{ MEDIA_URL }}css/images/delete.gif"></a></td>
 			</tr>
+			{% empty %}
+			<tr class="empty_entries"><td>You have not entries yet.</td></tr>
 	  {% endfor %}
 		</tbody>
 	</table>

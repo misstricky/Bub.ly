@@ -15,31 +15,39 @@ $(function(){
     
     // facebox
     $('a[rel*=facebox]').facebox();
+    $("#bookmarklet").tipsy({gravity: 's'});
+    $("#bookmarklet").click(function(){
+        $.facebox("Please drag the bookmarklet into the bookmarklet bar!");
+        return false;
+    })
     
     // upon selecting the file fire off the request
     $('#upload_form input[type=file]').change(function(e){
         $(".droplet").hide();
         $(".droplet_spinner").show();
         $("#upload_form").ajaxSubmit({
-            dataType:  'html',
+            dataType:  'json',
+            data: {html: true},
             iframe: true,
             url: '/file_upload/',
             success:   function(data) {
                 $('#upload_form input[type=file]').val("");
-                $(".droplet_spinner").hide();
-                $(".droplet").show();
+                $('.droplet_spinner').hide();
+                $('.droplet').show();
                 // alert with facebox containing the short url
-                $.facebox("<input type='text' class='upload-url' value='"+data+"'>");
+                $.facebox("<input type='text' class='upload-url' value='"+data.url+"'>");
+                $('.upload-url').select();
+                $(".empty_entries").remove();
+                $('#short_stats tbody').prepend('<tr><td class="link"><a href="'+data.url+'">'+data.url+'</a></td><td class="full_url"><a href="'+data.long_url+'">'+data.long_url+'</a></td><td class="when timeago">just now</td><td class="hits">0</td><td class="delete"><a href="#" class="link_delete"><img src="/static/css/images/delete.gif"></a></td></tr>');
             }
         });
         return false;
     });
     
-    $("upload-url").select();
-    
     // delete entry
-    $(".link_delete").click(function(){
+    $(".link_delete").live('click', function(){
         var self=$(this);
+        if ( confirm('Are you sure'))
         $.ajax({url: self.attr("href"),
                 type: 'DELETE',
                 success: function(){

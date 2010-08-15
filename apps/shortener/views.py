@@ -1,4 +1,8 @@
 import os
+try:
+    import simplejson
+except:
+    from django.utils import simplejson
 from django.conf import settings
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
@@ -45,6 +49,7 @@ def file_upload(request):
     url_object.save(url_id=url_id)
     # if authenticated user set url to his account
     if request.session.has_key("user_id"):
+        user_id = request.session["user_id"]
         if redis_ob.hexists("user:%s" %str(user_id), "email"):
             redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
     # if api_key is set add the url to the user account
@@ -52,6 +57,8 @@ def file_upload(request):
         user_id = redis_ob.get("user:api_key:%s" %api_key)
         if redis_ob.hexists("user:%s" %str(user_id), "email"):
             redis_ob.lpush("user:urls:%s" %user_id, "url:"+str(url_object.id))
+    if request.POST.get("html", None) == "true":
+        return HttpResponse(simplejson.dumps({"url": url_object.get_short_url(), "long_url": url}), mimetype="application/javascript")
     return HttpResponse(url_object.get_short_url())
 
 def expand_url(request, slug):
@@ -71,6 +78,7 @@ def expand_url(request, slug):
             user_id = request.session["user_id"]
             if redis_ob.hexists("user:%s" %str(user_id), "email") and \
                "url:"+str(url_id) in redis_ob.lrange("user:urls:%s" %str(user_id), 0, -1):
+               # if redis_ob.hget("url:%s" %str(url_id), "is_file"): delete the file  
                redis_pipe = redis_ob.pipeline()
                redis_pipe.lrem("user:urls:%s" %str(user_id), "url:"+str(url_id)).delete("url:%s" %str(url_id))
                redis_pipe.execute()

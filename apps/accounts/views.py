@@ -61,8 +61,10 @@ def settings(request):
             return HttpResponseRedirect("/")
     elif request.method =="DELETE":
         # delete user related data from redis
-        user_email = redis_ob.hget("user:%s" %user_id, "email")
-        redis_ob.delete("user:email:%s" %md5_constructor(user_email).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id)
+        user_data = redis_ob.hgetall("user:%s" %user_id)
+        url_ids = redis_ob.lrange("user:urls:%s" %str(user_id), 0, -1)
+        redis_ob.delete("user:email:%s" %md5_constructor(user_data.get("email")).hexdigest(), "user:%s" %user_id, "user:urls:%s" %user_id, "user:api_key:%s" %user_data.get("api_key"))
+        
         # logout the user
         request.session.flush()
         return HttpResponse("success", mimetype="application/javascript")
