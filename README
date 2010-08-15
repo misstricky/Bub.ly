@@ -17,8 +17,8 @@ EXTERNAL DEPENDENCIES:
        $ make
        $ ./redis-server
    - or use redis-server in the tools folder
-       $ ./tools/redis-server
-   
+       $ ./tools/redis-server tools/redis.conf
+
    
 USING DROPLET TO UPLOAD FILES
 
