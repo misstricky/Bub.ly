@@ -227,7 +227,7 @@ a:hover{
 .settings label, .settings .api-label{
     float:left;
     display:block;
-    width:150px;
+    width:125px;
     font-weight:400;
 }
 
@@ -278,7 +278,7 @@ a:hover{
 }
 
 .settings .api-key{
-    color:#232323;
+
 }
 
 .settings .user-delete{
@@ -326,9 +326,9 @@ a:hover{
 #sky-header .sky-title{
     text-indent:-999999px;
     display:block;
-    width:327px;
+    width:441px;
     height:112px;
-    background:url(images/sky-title-2.gif) no-repeat top left;
+    background:url(images/sky-title-3.gif) no-repeat top left;
     margin:0 auto;
 }
 
