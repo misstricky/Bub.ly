@@ -5,7 +5,7 @@ The site consists of two main pages: a homepage with a login/sign up form, and a
 EXTERNAL DEPENDENCIES:
 
  - redis (http://code.google.com/p/redis/)
-   - please use the version 2.1.1 
+   - please use the version 2.1.1 as we use hashes feature
    - download link (http://github.com/antirez/redis/tarball/v2.1.1-watch)
    - installation 
        $ tar -xzf redis-2.1.1.tar.gz
