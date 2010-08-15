@@ -2,6 +2,10 @@ Hello!!  Welcome to bub.ly!  Here you can upload files and shorten links. You ca
 
 The site consists of two main pages: a homepage with a login/sign up form, and an account page that you see once you are logged in. The account page lists all the links you have shortened and all the files you have uploaded. The account page also provides you with an area to upload files, a download link for your personalized applescript droplet, and a draggable bookmarklet to shorten links.
 
+DEPENDENCIES
+
+$ sudo pip install -r requirements.txt
+
 EXTERNAL DEPENDENCIES:
 
  - redis (http://code.google.com/p/redis/)
