@@ -76,13 +76,19 @@
 			<tr class="empty_entries"><td>You have not entries yet.</td></tr>
 	  {% endfor %}
 		</tbody>
+		
 	</table>
-	{% if page > 1 %}
-	    <a href="?page={{page|add:"-1"}}">Previous</a>
-	  {% endif %}
-	{% if urls|length > 4 %}
-	  <a href="?page={{page|add:"1"}}">Next</a>
-	{% endif %}
+	
+		<div id="pages">
+		{% if page > 1 %}
+		    <a href="?page={{page|add:"-1"}}" class="prev">&laquo; Previous</a>
+		  {% endif %}
+		{% if page > 1 and urls|length > 4 %} &bull; {% endif %}
+		{% if urls|length > 4 %}
+		  <a href="?page={{page|add:"1"}}" class="next">Next &raquo;</a>
+		{% endif %}
+		</div>
+		
 	<div id="download_droplet" style="display:none;">
 	  <p><a href="{{ MEDIA_URL }}bubly.zip">Click here</a> to download our droplet. After you download the app please 
 	     run these commands in your terminal.
@@ -91,5 +97,8 @@
 	    </pre>   
 	  </p>
   </div>
-</dviv>{# container #}
+<div id="footer">
+	
+</div>
+</div>{# container #}
 {% endblock %}
