@@ -468,6 +468,32 @@ a:hover{
 .errorlist { color: red; font-size: 0.8em;}
 .messages { color: green; font-size: 0.8em; padding: 4px 10px; background: #EFF2B6;}
 
+
+/* ---------- Bookmarklet ---------- */
+
+.bookmarklet{
+    background:#f0f0f0 url(images/bookmarklet-bg.gif) center 20px no-repeat;
+}
+
+.bookmarklet #container{
+    width:385px;
+    margin:115px auto 0 auto;
+    overflow:hidden;
+}
+
+.bookmarklet .short_url{
+    font-size:24px;
+    line-height:30px;
+    padding:3px 5px;
+    border:none;
+    height:40px;
+    text-align:center;   
+    width:375px;
+    background:#f0f0f0;
+    color:#666;
+}
+
+
 /* tipsy related styles */
 .tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; font-weight:normal;}
 .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
