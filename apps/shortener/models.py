@@ -35,9 +35,13 @@ class UrlModel(object):
         url_data_id = int(url_id.lstrip("url:"))
         return self(url_data=url_data, url_id=url_data_id)
 
-    def get_short_url(self):
+    def get_short_url(self, user=None):
         if not self.id: raise UrlNotSaved
-        return '%s%s/' %(settings.SHORT_URL, to36(int(self.id)))
+        domain = None
+        if user:
+            domain = redis_ob.hget("user:%s" %str(user), "custom_domain")
+        if not domain: domain = settings.SHORT_URL
+        return '%s%s/' %(domain, to36(int(self.id)))
 
     def save(self, url_id=None):
         if not url_id: url_id = redis_ob.incr(self.key_counter)

@@ -25,7 +25,10 @@ def shorten_url(request):
     # if authenticated user set url to his account
     if request.session.has_key("user_id"):
         redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
-    return render_to_response("bookmarklet.html", {'link': url_object.get_short_url()}, context_instance=RequestContext(request))
+        link = url_object.get_short_url(request.session['user_id'])
+    else:
+        link = url_object.get_short_url()
+    return render_to_response("bookmarklet.html", {'link': link}, context_instance=RequestContext(request))
 
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
@@ -52,14 +55,17 @@ def file_upload(request):
         user_id = request.session["user_id"]
         if redis_ob.hexists("user:%s" %str(user_id), "email"):
             redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
+        link = url_object.get_short_url(user_id)
+    else:
+        link = url_object.get_short_url()
     # if api_key is set add the url to the user account
     if api_key:
         user_id = redis_ob.get("user:api_key:%s" %api_key)
         if redis_ob.hexists("user:%s" %str(user_id), "email"):
             redis_ob.lpush("user:urls:%s" %user_id, "url:"+str(url_object.id))
     if request.POST.get("html", None) == "true":
-        return HttpResponse(simplejson.dumps({"url": url_object.get_short_url(), "long_url": url}), mimetype="application/javascript")
-    return HttpResponse(url_object.get_short_url())
+        return HttpResponse(simplejson.dumps({"url": link, "long_url": url}), mimetype="application/javascript")
+    return HttpResponse(link)
 
 def expand_url(request, slug):
     try:

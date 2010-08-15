@@ -55,6 +55,11 @@ def settings(request):
                     return render_to_response('settings.html', {'form': form, 'user_data': user_data, 'message': message}, context_instance=RequestContext(request))
                 redis_pipe.rename("user:email:%s" %md5_constructor(user_email).hexdigest(), "user:email:%s" %md5_constructor(form.cleaned_data['email']).hexdigest()).hset("user:%s" %user_id, "email", form.cleaned_data['email'])
             salt, hsh = generate_password(form.cleaned_data['password'])
+            if form.cleaned_data['custom_domain']:
+                custom_domain = form.cleaned_data['custom_domain']
+                if not custom_domain.startswith('http'): custom_domain = "http://"+custom_domain
+                if not custom_domain.endswith('/'): custom_domain = custom_domain+"/"
+                redis_pipe.hset("user:%s" %user_id, "custom_domain", custom_domain)
             redis_pipe.hset("user:%s" %user_id, "password", "%s$%s" %(salt, hsh))
             redis_pipe.execute()
             messages.add_message(request, messages.INFO, 'Your account settings are updated!')

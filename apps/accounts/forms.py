@@ -62,6 +62,13 @@ class LoginForm(forms.Form):
 
 class SettingsForm(forms.Form):
     email = forms.EmailField(required=True)
-    password = forms.CharField(required=True, widget=forms.PasswordInput(render_value=False))
+    password = forms.CharField(required=False, widget=forms.PasswordInput(render_value=False))
+    custom_domain = forms.CharField(required=False, help_text="<a href='#custom_domain' rel='facebox' class='custom_domain'>help</a>")
 
+    def clean_custom_domain(self):
+        custom_domain = self.cleaned_data['custom_domain']
+        if custom_domain and not '.' in custom_domain:
+            raise forms.ValidationError("Does n't look like a domain to me")
+        return custom_domain
+            
 
