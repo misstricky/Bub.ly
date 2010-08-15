@@ -3,11 +3,13 @@
 {% block body_class %}login{% endblock %}
 
 {% block extra_head %}
+{% if login %}
 <script type="text/javascript" charset="utf-8">
   $(function(){
     $(".login-link").click();
   });
 </script>
+{% endif %}
 {% endblock %}
 
 {% block content %}

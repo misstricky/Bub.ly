@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}- Bookmarklet{% endblock %}
+
+{% block html_class %}html-home{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block extra_head %}
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $(".short_url").select();
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="container">
+	<div id="main-top">
+		<a class="main-title" href="/">Bub.ly</a>
+		<div class="main-menu">
+		  <a href="/">Home</a>
+			<a href="/_logout/">Logout</a>
+		</div>{# end-main-menu #}
+	</div>{# main top #}
+	
+	<div id="inter-main">
+		<div class="settings">
+		  <input value="{{ link }}" class="short_url">
+	</div>{# end-settings #}
+  </div>{# end-inter-main #}
+
+</div>
+{% endblock %}
+
+
