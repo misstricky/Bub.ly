@@ -1,4 +1,4 @@
-# since redis is the only datastore writing a sessionStore class 
+# since redis is the only datastorewe use, writing a sessionStore class 
 # to store sessions in redis
 # inspired from http://hg.gomaa.us/agdj/file/tip/agdj/lib/redis_session_backend.py
 
