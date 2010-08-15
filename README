@@ -22,4 +22,10 @@ EXTERNAL DEPENDENCIES:
    
 USING DROPLET TO UPLOAD FILES
 
+RUNNING pyres message queue:
+ - There is no need to run pyres to the project working. But it will used to 
+ upload the files to S3 asynchronously to reduce the server costs.
+ 
+  $ pyres_worker fileupload filedelete
+
 
