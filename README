@@ -31,7 +31,8 @@ RUNNING pyres message queue:
            2.0.0 since we use redis hashes
 
  - There is no need to run pyres to the project working. But it will used to 
- upload the files to S3 asynchronously to reduce the server costs.
+   upload the files to S3 asynchronously to reduce the server costs. Similarly
+   there is a job to delete the file from S3 when the entry is killed by user.
  
   $ pyres_worker fileupload filedelete
 
