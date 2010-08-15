@@ -23,6 +23,13 @@ EXTERNAL DEPENDENCIES:
 USING DROPLET TO UPLOAD FILES
 
 RUNNING pyres message queue:
+ - INSTALLATION
+ 
+    $ sudo pip install boto==1.9b pyres==0.9 itty==0.6.4 pystache==0.2.0 redis==2.0.0
+    
+    Note:  Installing pyres may revert the redis to 1.34 version. We need
+           2.0.0 since we use redis hashes
+
  - There is no need to run pyres to the project working. But it will used to 
  upload the files to S3 asynchronously to reduce the server costs.
  
