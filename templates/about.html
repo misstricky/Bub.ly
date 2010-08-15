@@ -21,6 +21,35 @@
 		<div class="settings">
       <h3>About bub.ly</h3>
       <p>Bub.ly</p>
+      
+      <h5>API</h5>
+      <p>Bub.ly provides both unauthenticated and an authenticated API to
+         shorten links and upload files.</p>
+
+      <h6>Shorten Links</h6>
+      <p>All requests to shorten links are GET.</p>
+      <pre>
+        http://bub.ly/shorten_url?url=http://google.com/
+         -> returns a html page with link selected.
+      </pre>
+      <p>Make an AJAX request to the shorten_url to receive JSON</p>
+      <pre>
+        http://bub.ly/shorten_url?url=http://google.com/
+         ->  {'url': 'http://bub.ly/atc/'}
+      </pre>
+      
+      <p>To shorten links via an authenticated user. <a href="/_settings/">Click here</a> 
+        to receive your API key.</p>
+      <pre>
+        http://bub.ly/shorten_url?url=http://google.com/&api_key=xxxxxxxxxx
+      </pre>
+      
+      <h6>Upload Files</h6>
+      <p>All requests to upload files are POST. The trailing slash to the url
+        is important as redirects does not carry POST data forward.</p>
+      <pre>
+        curl -d "api_key=xxxx&file=@filename.jpg" http://bub.ly/file_upload/ 
+      </pre>
 	</div>{# end-settings #}
   </div>{# end-inter-main #}
 

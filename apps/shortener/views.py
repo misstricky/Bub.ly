@@ -16,6 +16,7 @@ redis_ob = get_client()
 def shorten_url(request):
     url = request.GET.get('url', None)
     login = request.GET.get('login', '0')
+    api_key = request.GET.get('api_key', None)
     # validate the url here
     if not url: raise Http404
     if login == '1' and not request.session.has_key("user_id"):
@@ -28,6 +29,12 @@ def shorten_url(request):
         link = url_object.get_short_url(request.session['user_id'])
     else:
         link = url_object.get_short_url()
+    if api_key:
+        user_id = redis_ob.get("user:api_key:%s" %api_key)
+        if redis_ob.hexists("user:%s" %str(user_id), "email"):
+            redis_ob.lpush("user:urls:%s" %user_id, "url:"+str(url_object.id))
+    if request.is_ajax():
+        return HttpResponse(simplejson.dumps({'url': link}), mimetype="application/javascript")
     return render_to_response("bookmarklet.html", {'link': link}, context_instance=RequestContext(request))
 
 from django.views.decorators.csrf import csrf_exempt
