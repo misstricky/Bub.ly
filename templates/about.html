@@ -12,17 +12,20 @@
 		<div class="main-menu">
 		  <a href="/">Home</a>
 		  {% if request.session.user_id %}
+				<a href="/_settings/">Settings</a>
 			  <a href="/_logout/">Logout</a>
 			{% endif %}
 		</div>{# end-main-menu #}
 	</div>{# main top #}
 	
 	<div id="inter-main">
-		<div class="settings">
+		<div class="about">
       <h3>About bub.ly</h3>
-      <p>Bub.ly</p>
-      
-      <h5>API</h5>
+
+		<h4>Bub.ly</h4>
+      <p>Bub.ly is here to provide all your link-shortening and file-uploading needs. You can use our bookmarklet to shorten links on the web, and use either our uploading form/droplet for your Mac OSX Dock.</p>
+	<p>You can even use your own custom domain instead of bub.ly. We also have an API so you can make your own applications!</p>
+      <h4>API</h4>
       <p>Bub.ly provides both unauthenticated and an authenticated API to
          shorten links and upload files.</p>
 
