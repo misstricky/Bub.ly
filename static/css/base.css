@@ -355,9 +355,9 @@ a:hover{
 #sky-header .sky-title{
     text-indent:-999999px;
     display:block;
-    width:441px;
-    height:112px;
-    background:url(images/sky-title-3.gif) no-repeat top left;
+    width:327px;
+    height:111px;
+    background:url(images/sky-title-2.gif) no-repeat top left;
     margin:0 auto;
 }
 
@@ -488,7 +488,7 @@ a:hover{
 }
 
 .bookmarklet .short_url{
-    font-size:24px;
+    font-size:28px;
     line-height:30px;
     padding:3px 5px;
     border:none;
