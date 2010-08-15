@@ -15,7 +15,7 @@ url:<url_id>                  -   hash {"url": "http://google.com/",
                                         "hits": 0,
                                         "created_at": "1281778154.86",
                                         "is_file": False,
-                                        "user": <user_id>}
+                                        "file_name": "some.jpg"}
 
                                        
 
