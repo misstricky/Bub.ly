@@ -4,8 +4,7 @@
 
 body{
     background:#fff;
-    font-size:14px;
-    line-height:16px;
+    font: 14px/16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
     color:#666;
 }
 
@@ -135,11 +134,14 @@ a:hover{
 }
 
 .upload-url{
-    font-size:24px;
+    font-size:26px;
+    line-height:29px;
     border:none;
     margin:5px auto;
     display:block;
-    font-family: Arial !important;
+    color:#555;
+    width:350px;
+    text-align:center;
 }
 
 #inter-main .inter-main-inner #info{
@@ -214,14 +216,24 @@ a:hover{
 /* ---------- Main Settings Styles ---------- */
 
 .settings{
-    width:500px;
+    width:600px;
     margin:5px auto 20px auto;
 }
 
 .settings p{
-    margin:20px 0;
+    margin:25px 0;
 }
 
+.settings label, .settings .api-label{
+    float:left;
+    display:block;
+    width:125px;
+    font-weight:400;
+}
+
+.settings #id_email{
+
+}
 
 .settings #id_email, .settings #id_password{
     border:1px solid #fff;
@@ -231,12 +243,19 @@ a:hover{
     -moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
+	width:355px;
+}
+
+.settings .buttons{
+    overflow:hidden;
+    margin:25px auto 10px auto;
+    width:340px;
 }
 
 .settings .save{
     background:url(images/save.gif) top left no-repeat;
     width:153px;
-    height:64px;
+    height:54px;
     text-indent:-99999px;
     border:none;
     cursor:pointer;
@@ -245,8 +264,26 @@ a:hover{
     display:block;
 }
 
+.settings .home{
+    background:url(images/home.gif) top left no-repeat;
+    width:153px;
+    height:54px;
+    text-indent:-99999px;
+    border:none;
+    cursor:pointer;
+    cursor:hand;
+    margin-right:15px;
+    display:block;
+    float:left;
+}
+
+.settings .api-key{
+
+}
+
 .settings .user-delete{
     text-align:center;
+    margin-top:-15px;
 }
 
 .settings #user_delete{
@@ -289,9 +326,9 @@ a:hover{
 #sky-header .sky-title{
     text-indent:-999999px;
     display:block;
-    width:327px;
+    width:441px;
     height:112px;
-    background:url(images/sky-title-2.gif) no-repeat top left;
+    background:url(images/sky-title-3.gif) no-repeat top left;
     margin:0 auto;
 }
 
@@ -409,7 +446,7 @@ a:hover{
 .messages { color: green; font-size: 0.8em; padding: 4px 10px; background: #EFF2B6;}
 
 /* tipsy related styles */
-.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; }
+.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; font-weight:normal;}
 .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }
 .tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
 .tipsy-arrow { position: absolute; background: url('images/tipsy.gif') no-repeat top left; width: 9px; height: 5px; }
