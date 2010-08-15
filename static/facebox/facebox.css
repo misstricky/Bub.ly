@@ -53,6 +53,13 @@
   padding: 10px;
   background: #fff;
   width: 370px;
+  color:#555;
+  font-size:26px;
+  line-height:29px;
+}
+
+#facebox .body pre{
+    font-size:14px;
 }
 
 #facebox .loading {

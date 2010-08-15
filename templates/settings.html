@@ -20,7 +20,7 @@
 		  {% if message %}{{ message }}{% endif %}
       <form action="" method="POST" accept-charset="utf-8">
         {{ form.as_p }}
-        <p>API key: {{ user_data.api_key }}</p>
+        <p>API key: <span class="api-key">{{ user_data.api_key }}</span></p>
         {% csrf_token %}
         <p><input type="submit" value="Save &rarr;" class="save"></p>
         <p class="user-delete"><a id="user_delete" href="/delete/">(Delete Account)</a></p>

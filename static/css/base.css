@@ -4,8 +4,7 @@
 
 body{
     background:#fff;
-    font-size:14px;
-    line-height:16px;
+    font: 14px/16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
     color:#666;
 }
 
@@ -135,11 +134,12 @@ a:hover{
 }
 
 .upload-url{
-    font-size:24px;
+    font-size:26px;
+    line-height:29px;
     border:none;
     margin:5px auto;
     display:block;
-    font-family: Arial !important;
+    color:#555;
 }
 
 #inter-main .inter-main-inner #info{
@@ -236,13 +236,17 @@ a:hover{
 .settings .save{
     background:url(images/save.gif) top left no-repeat;
     width:153px;
-    height:64px;
+    height:54px;
     text-indent:-99999px;
     border:none;
     cursor:pointer;
     cursor:hand;
     margin:25px auto 15px auto;
     display:block;
+}
+
+.settings .api-key{
+    color:#232323;
 }
 
 .settings .user-delete{
