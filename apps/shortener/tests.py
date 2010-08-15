@@ -39,3 +39,7 @@ class FunctionalityTest(TestCase):
         f.close()
         self.assertEquals(response.status_code, 200)
         
+    def test_settings(self):
+        response = self.client.get('/_settings/')
+        self.assertEquals(response.status_code, 404)
+        
