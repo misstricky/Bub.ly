@@ -28,3 +28,11 @@ class FileUpload(object):
         k.key = url_object.file_name
         k.set_contents_from_filename(file_c, policy='public-read')
 
+class FileDelete(object):
+    queue = "filedelete"
+
+    @staticmethod
+    def perform(url_id):
+        url_object = UrlModel.get_by_id(url_id=int(url_id))
+        bucket.delete_key(url_object.filename)
+
