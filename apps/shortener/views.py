@@ -25,7 +25,7 @@ def shorten_url(request):
     # if authenticated user set url to his account
     if request.session.has_key("user_id"):
         redis_ob.lpush("user:urls:%s" %request.session['user_id'], "url:"+str(url_object.id))
-    return HttpResponse(url_object.get_short_url())
+    return render_to_response("bookmarklet.html", {'link': url_object.get_short_url()}, context_instance=RequestContext(request))
 
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt

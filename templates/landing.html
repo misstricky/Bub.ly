@@ -2,6 +2,16 @@
 
 {% block body_class %}login{% endblock %}
 
+{% block extra_head %}
+{% if login %}
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $(".login-link").click();
+  });
+</script>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div id="container">
 	<div id="sky-bg">
@@ -17,7 +27,7 @@
 				<div class="ocean-form">
 				    {% for error in form.errors.values %}{{ error|escape }}{% endfor %}
 						<form action="/_register/" id="login_register_form" method="POST" accept-charset="utf-8">
-						  	<label for="id_email">Email:</label></th><td><input type="text" name="email" id="id_email" value="email address" />
+						  	<label for="id_email">Email:</label></th><td><input type="text" name="email" id="id_email" value="{% if form.data.email %}{{ form.data.email }}{%else%}email address{% endif %}" />
 							<label for="id_password">Password:</label></th><td><input type="password" name="password" id="id_password" value="password" />
 							  {% if request.GET.next %}<input type="hidden" name="next" value="{{ request.GET.next }}">{% endif %}
 						  {% csrf_token %}

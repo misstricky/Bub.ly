@@ -32,7 +32,7 @@ def login(request):
         # if user is already logged in redirect to /
         if request.session.has_key('user_id'): return HttpResponseRedirect("/")
         form = LoginForm()
-    return render_to_response("landing.html", {'form': form}, context_instance=RequestContext(request))
+    return render_to_response("landing.html", {'form': form, 'login': True}, context_instance=RequestContext(request))
 
 def logout(request):
     request.session.flush()
