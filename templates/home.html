@@ -77,6 +77,12 @@
 	  {% endfor %}
 		</tbody>
 	</table>
+	{% if page > 1 %}
+	    <a href="?page={{page|add:"-1"}}">Previous</a>
+	  {% endif %}
+	{% if urls|length > 49 %}
+	  <a href="?page={{page|add:"1"}}">Next</a>
+	{% endif %}
 	<div id="download_droplet" style="display:none;">
 	  <p><a href="{{ MEDIA_URL }}bubly.zip">Click here</a> to download our droplet. After you download the app please 
 	     run these commands in your terminal.
