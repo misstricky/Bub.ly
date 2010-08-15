@@ -27,6 +27,7 @@ class FileUpload(object):
         file_c = settings.MEDIA_ROOT+"static/files/"+url_object.file_name
         k.key = url_object.file_name
         k.set_contents_from_filename(file_c, policy='public-read')
+        # update the url of the urlobject
 
 class FileDelete(object):
     queue = "filedelete"
