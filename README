@@ -16,9 +16,10 @@ EXTERNAL DEPENDENCIES:
        $ cd redis-2.1.1
        $ make
        $ ./redis-server
-   - You can choose to move the binary redis-server into ur /usr/local/bin
-     or run it right from there.
-
+   - or use redis-server in the tools folder
+       $ ./tools/redis-server
+   
+   
 USING DROPLET TO UPLOAD FILES
 
 
