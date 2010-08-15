@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}- About{% endblock %}
+
+{% block html_class %}html-home{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+<div id="container">
+	<div id="main-top">
+		<a class="main-title" href="/">Bub.ly</a>
+		<div class="main-menu">
+		  <a href="/">Home</a>
+		  {% if request.session.user_id %}
+			  <a href="/_logout/">Logout</a>
+			{% endif %}
+		</div>{# end-main-menu #}
+	</div>{# main top #}
+	
+	<div id="inter-main">
+		<div class="settings">
+      <h3>About bub.ly</h3>
+      <p>Bub.ly</p>
+	</div>{# end-settings #}
+  </div>{# end-inter-main #}
+
+</div>
+{% endblock %}
+
+

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
+from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('',
     (r'^$', 'shortener.views.home'),
@@ -9,6 +10,7 @@ urlpatterns = patterns('',
     (r'^_login/$', 'accounts.views.login'),
     (r'^_logout/$', 'accounts.views.logout'),
     (r'^_settings/$', 'accounts.views.settings'),
+    (r'^_about/$', direct_to_template, {"template": "about.html"}),
     (r'^(?P<slug>[\w]+)/$', 'shortener.views.expand_url'),
 )
 

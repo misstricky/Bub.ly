@@ -35,7 +35,7 @@ $(function(){
                 $('.droplet_spinner').hide();
                 $('.droplet').show();
                 // alert with facebox containing the short url
-                $.facebox("<input type='text' class='upload-url .tk-chennai-slab' value='"+data.url+"'>");
+                $.facebox("<input type='text' class='upload-url .tk-chennai-slab' value='"+data.url+"'><br /> <a href='http://twitter.com/home/?status="+data.url+"'>Tweet this</a>");
                 $('.upload-url').select();
                 $(".empty_entries").remove();
                 $('#short_stats tbody').prepend('<tr><td class="link"><a href="'+data.url+'">'+data.url+'</a></td><td class="full_url"><a href="'+data.long_url+'">'+data.long_url+'</a></td><td class="when timeago">just now</td><td class="hits">0</td><td class="delete"><a href="#" class="link_delete"><img src="/static/css/images/delete.gif"></a></td></tr>');
